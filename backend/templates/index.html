@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #6c6868;
         }
         header {
             display: flex;
@@ -110,7 +110,7 @@
 </head>
 <body>
     
-    <!-- Header -->
+    
     <header>
         <div class="logo">
             <h1>GDP Predictor</h1>
@@ -125,7 +125,7 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
+    
     <main>
         <section class="form-section">
             <h2>Predict the GDP of a Year</h2>
@@ -136,7 +136,7 @@
             </form>
         </section>
 
-        <!-- GDP Information -->
+        
         <section class="gdp-info">
             <h3>About GDP</h3>
             <p>Gross Domestic Product (GDP) is a measure of the economic health and growth of a country. It represents the total monetary value of all goods and services produced within a nation during a specific period.</p>
@@ -147,14 +147,24 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    
     <footer>
         <p>&copy; 2025 GDP Predictor. All rights reserved.</p>
         <div class="social-media">
-            <a href="#"><img src="/images/facebook-icon.png" alt="Facebook"></a>
-            <a href="#"><img src="/images/twitter-icon.png" alt="Twitter"></a>
-            <a href="#"><img src="/images/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+            </a>
         </div>
     </footer>
+    
 </body>
 </html>
