@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - GDP Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #7f7d7d;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(45deg, #28a745, #218838);
+            color: white;
+        }
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .hero-section p {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+        .content-section {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .content-section h2 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        .content-section p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .gdp-info {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-top: 20px;
+            color: #444;
+            text-align: center;
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>GDP Predictor</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <h1>Welcome to GDP Predictor</h1>
+        <p>Your gateway to predicting GDP trends with precision and accuracy. Leverage cutting-edge machine learning technology to forecast economic progress!</p>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <h2>Discover the Power of Prediction</h2>
+        <p>Our GDP Predictor utilizes advanced machine learning models trained on extensive historical data. By analyzing trends and patterns, the tool provides insightful GDP forecasts that empower individuals, businesses, and policymakers alike.</p>
+        <p>Stay ahead in understanding economic dynamics and make informed decisions based on reliable predictions. Explore GDP trends for any year and gain a deeper perspective on economic growth.</p>
+        <div class="gdp-info">
+            <p>Gross Domestic Product (GDP) measures a country's economic performance and growth. It includes the total value of goods and services produced within a nation.</p>
+            <p>GDP is a critical indicator of economic health, influencing investment, policy-making, and global markets.</p>
+            <p>It helps track national progress, ensuring balanced development across various industries.</p>
+            <p>Understanding GDP trends enables smarter decisions in finance and business.</p>
+            <p>Discover the transformative power of GDP insights with our tool!</p>
+        </div>
+        <a href="/about" class="cta-button">Learn More</a>
+    </div>
+    <footer>
+        <p>&copy; 2025 GDP Predictor. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
