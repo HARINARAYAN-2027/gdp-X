@@ -8,7 +8,7 @@ matplotlib.use('Agg')
 
 def generate_gdp_plot(year, predicted_gdp):
    
-    file_path = 'backend/model/india_gdp/gdp.csv'
+    file_path = 'model/india_gdp/gdp.csv'
     
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Data file not found at: {file_path}")
@@ -31,7 +31,7 @@ def generate_gdp_plot(year, predicted_gdp):
     plt.grid(True)
 
     # Save the plot to the static folder
-    plot_path = os.path.join('backend', 'static', 'images', 'plot.png')
+    plot_path = os.path.join('static', 'images', 'plot.png')
     plt.savefig(plot_path)
     plt.close()  # Close the plot to free memory
     plt.show()  

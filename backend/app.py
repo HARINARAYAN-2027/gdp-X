@@ -19,7 +19,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'your-email@gmail.com'  # Replace with your 
 mail = Mail(app)
 
 # Load the trained GDP prediction model
-model_path = 'backend/model/gdp_model.pkl'
+model_path = 'model/gdp_model.pkl'
 if os.path.exists(model_path):
     with open(model_path, 'rb') as model_file:
         model = pickle.load(model_file)
@@ -28,7 +28,7 @@ else:
     raise FileNotFoundError(f"The model file was not found at: {model_path}")
 
 # Load the scaler
-scaler_path = 'backend/model/scaler.pkl'
+scaler_path = 'model/scaler.pkl'
 if os.path.exists(scaler_path):
     with open(scaler_path, 'rb') as scaler_file:
         scaler = pickle.load(scaler_file)
@@ -70,7 +70,7 @@ def submit_contact():
         # Send email
         msg = Message(
             subject=f"New Contact Form Submission from {name}",
-            recipients=['harinarayankumar548@gmail.com'],  # Your email address
+            recipients=['harinarayankumar548@gmail.com'],  
             body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
         )
         mail.send(msg)
