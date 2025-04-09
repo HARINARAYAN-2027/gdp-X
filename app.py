@@ -13,12 +13,12 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USERNAME'] = 'your-email@gmail.com'  # Replace with your Gmail address
-app.config['MAIL_PASSWORD'] = 'your-app-password'    # Replace with your Gmail app password
+app.config['MAIL_PASSWORD'] = 'your-app-password'     # Replace with your Gmail app password
 app.config['MAIL_DEFAULT_SENDER'] = 'your-email@gmail.com'  # Replace with your Gmail address
 
 mail = Mail(app)
 
-# Load the trained GDP prediction model
+# Load trained GDP prediction model
 model_path = os.path.join(os.path.dirname(__file__), 'model', 'gdp_model.pkl')
 if os.path.exists(model_path):
     with open(model_path, 'rb') as model_file:
@@ -27,7 +27,7 @@ if os.path.exists(model_path):
 else:
     raise FileNotFoundError(f"The model file was not found at: {model_path}")
 
-# Load the scaler
+# Load scaler
 scaler_path = os.path.join(os.path.dirname(__file__), 'model', 'scaler.pkl')
 if os.path.exists(scaler_path):
     with open(scaler_path, 'rb') as scaler_file:
@@ -36,46 +36,42 @@ if os.path.exists(scaler_path):
 else:
     raise FileNotFoundError(f"The scaler file was not found at: {scaler_path}")
 
-# Route for Homepage
+# ✅ Route for Homepage (changed from 'index.html' to 'home.html')
 @app.route('/')
 def home():
-    return render_template('index.html')  # Render homepage
+    return render_template('home.html')
 
-# Route for About Page
+# About page
 @app.route('/about')
 def about():
-    return render_template('about.html')  # Render about page
+    return render_template('about.html')
 
-# Route for Contact Page
+# Contact page
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')  # Render contact page
+    return render_template('contact.html')
 
-# Route for handling Contact Form submission
+# Contact form submission
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
     try:
-        # Retrieve form data
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
 
-        # Validate input fields
         if not name or not email or not message:
             return render_template(
                 'contact.html',
                 error_message="All fields are required! Please fill out the form completely."
             )
 
-        # Send email
         msg = Message(
             subject=f"New Contact Form Submission from {name}",
-            recipients=['harinarayankumar548@gmail.com'],  
+            recipients=['harinarayankumar548@gmail.com'],
             body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
         )
         mail.send(msg)
 
-        # Show success message
         return render_template(
             'contact.html',
             success_message="Thank you for reaching out! Your message has been sent successfully."
@@ -86,41 +82,33 @@ def submit_contact():
             error_message=f"An error occurred: {str(e)}"
         )
 
-# Route for GDP Prediction
+# GDP prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get user input
         year = request.form.get('year')
         if not year or not year.isdigit():
             return render_template('result.html', prediction_text="Invalid input. Please enter a numeric year.")
 
         year = int(year)
-
-        # Scale the input year
         scaled_year = scaler.transform([[year]])
-
-        # Predict GDP using the trained model
         predicted_gdp = model.predict(scaled_year)[0]
 
-        # Generate the plot dynamically
         plot_path = generate_gdp_plot(year, predicted_gdp)
 
-        # Render the result page
         return render_template(
             'result.html',
             prediction_text=f"Predicted GDP for {year}: {predicted_gdp:,.2f}",
             plot_path=url_for('static', filename='images/plot.png')
         )
     except Exception as e:
-        # Handle errors gracefully
         return render_template('result.html', prediction_text=f"An error occurred: {str(e)}")
 
-# Route for Results Page (optional placeholder)
+# Results page
 @app.route('/results')
 def results():
-    return render_template('result.html')  # Placeholder route to render results page
+    return render_template('result.html')
 
-# Run Flask app
+# Run the app
 if __name__ == '__main__':
     app.run(debug=True)
