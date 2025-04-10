@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+
+    <!-- Google AdSense (Optional, only if you want ads here too) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,41 +19,73 @@
             margin: 0;
             padding: 0;
         }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ddd;
+        }
         .contact-container {
             max-width: 600px;
             margin: 50px auto;
-            background: rgb(192, 5, 5);
-            padding: 20px;
+            background: white;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(173, 68, 68, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
-        h1 {
-            color: #333;
-            text-align: center;
+        .contact-container h1 {
+            color: #222;
+            margin-bottom: 20px;
         }
-        p {
+        .contact-container p {
             font-size: 18px;
             color: #555;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         form label {
-            font-size: 18px;
-            color: #333;
-        }
-        form input, form textarea, form button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
             font-size: 16px;
+            color: #333;
+            text-align: left;
+            display: block;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 15px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
         }
         form button {
-            background-color: #28a745;
+            padding: 12px 20px;
+            font-size: 16px;
             color: white;
+            background-color: #28a745;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
         }
         form button:hover {
@@ -55,8 +94,8 @@
     </style>
 </head>
 <body>
-     
-     <header>
+
+    <header>
         <div class="logo">
             <h1>GDP Predictor</h1>
         </div>
@@ -69,24 +108,25 @@
             </ul>
         </nav>
     </header>
+
     <div class="contact-container">
         <h1>Contact Us</h1>
-        
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
-        
+
         <form action="/submit_contact" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
-            
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your Email" required>
-            
+
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-            
+
             <button type="submit">Send Message</button>
         </form>
     </div>
+
 </body>
 </html>
