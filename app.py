@@ -4,17 +4,21 @@ import pickle
 import os
 import numpy as np
 from visualize import generate_gdp_plot  # Import visualization logic
+from dotenv import load_dotenv  # Load .env (optional if running locally)
+
+# Load environment variables from .env file (only for local development)
+load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Configure Flask-Mail
+# Configure Flask-Mail using environment variables
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com'  # Replace with your Gmail address
-app.config['MAIL_PASSWORD'] = 'your-app-password'    # Replace with your Gmail app password
-app.config['MAIL_DEFAULT_SENDER'] = 'your-email@gmail.com'
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
@@ -39,7 +43,7 @@ else:
 # Route for Homepage
 @app.route('/')
 def home():
-    return render_template('home.html')  # ✅ Updated to render home.html
+    return render_template('home.html')
 
 # Route for About Page
 @app.route('/about')
@@ -60,27 +64,18 @@ def submit_contact():
         message = request.form.get('message')
 
         if not name or not email or not message:
-            return render_template(
-                'contact.html',
-                error_message="All fields are required! Please fill out the form completely."
-            )
+            return render_template('contact.html', error_message="All fields are required! Please fill out the form completely.")
 
         msg = Message(
             subject=f"New Contact Form Submission from {name}",
-            recipients=['harinarayankumar548@gmail.com'],  
+            recipients=['harinarayankumar548@gmail.com'],  # You can use a variable here if needed
             body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
         )
         mail.send(msg)
 
-        return render_template(
-            'contact.html',
-            success_message="Thank you for reaching out! Your message has been sent successfully."
-        )
+        return render_template('contact.html', success_message="Thank you for reaching out! Your message has been sent successfully.")
     except Exception as e:
-        return render_template(
-            'contact.html',
-            error_message=f"An error occurred: {str(e)}"
-        )
+        return render_template('contact.html', error_message=f"An error occurred: {str(e)}")
 
 # Route to predict GDP
 @app.route('/predict', methods=['POST'])
@@ -97,11 +92,9 @@ def predict():
         # Generate plot
         plot_path = generate_gdp_plot(year, predicted_gdp)
 
-        return render_template(
-            'result.html',
-            prediction_text=f"Predicted GDP for {year}: {predicted_gdp:,.2f}",
-            plot_path=url_for('static', filename='images/plot.png')
-        )
+        return render_template('result.html',
+                               prediction_text=f"Predicted GDP for {year}: {predicted_gdp:,.2f}",
+                               plot_path=url_for('static', filename='images/plot.png'))
     except Exception as e:
         return render_template('result.html', prediction_text=f"An error occurred: {str(e)}")
 
@@ -112,5 +105,5 @@ def results():
 
 # Start the Flask server
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # PORT from env, fallback to 5000
+    port = int(os.environ.get("PORT", 5000))  # Use PORT from Render
     app.run(debug=True, host='0.0.0.0', port=port)
