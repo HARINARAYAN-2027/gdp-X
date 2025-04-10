@@ -2,57 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDP Prediction Results</title>
+
+    <!-- Google AdSense Script (Optional) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <style>
-       .result-container {
-            max-width: 600px;
-            margin: 50px auto;
-            background: rgb(94, 92, 92);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
         }
-        h1 {
-            color: #333;
-            text-align: center;
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        form label {
-            font-size: 18px;
-            color: #333;
+        header .logo h1 {
+            margin: 0;
         }
-           
-        p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 15px;
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
         }
-            img {
-            border: 2px solid #806e6e;
-            margin-top: 20px;
-            max-width: 90%; 
-            height: auto;
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ddd;
         }
         .container {
             max-width: 800px;
             margin: 50px auto;
-            padding: 20px;
-            background: rgb(122, 54, 54);
+            padding: 30px;
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
             text-align: center;
+        }
+        h1 {
+            color: #222;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+        img {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
         }
         .back-button {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
+            margin-top: 30px;
+            padding: 12px 24px;
             font-size: 16px;
             color: white;
             background-color: #007bff;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             transition: background-color 0.3s ease;
         }
         .back-button:hover {
@@ -61,8 +89,9 @@
     </style>
 </head>
 <body>
-     
-     <header>
+
+    <!-- Header -->
+    <header>
         <div class="logo">
             <h1>GDP Predictor</h1>
         </div>
@@ -75,14 +104,14 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Results Section -->
     <div class="container">
         <h1>GDP Prediction Results</h1>
-        <!-- Predicted GDP Value -->
         <p><strong>{{ prediction_text }}</strong></p>
-        <!-- Plot Display -->
         <img src="{{ plot_path }}" alt="GDP Prediction Plot">
-        <!-- Back to Home Button -->
         <a href="/" class="back-button">Back to Home</a>
     </div>
+
 </body>
 </html>
