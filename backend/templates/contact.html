@@ -5,13 +5,7 @@
     <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-
-    <!-- Google AdSense (Optional, only if you want ads here too) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
-        crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,81 +13,78 @@
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header .logo h1 {
-            margin: 0;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            margin-left: 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        nav ul li a:hover {
-            color: #ddd;
-        }
         .contact-container {
             max-width: 600px;
             margin: 50px auto;
-            background: white;
-            padding: 30px;
+            background: rgb(192, 5, 5);
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(173, 68, 68, 0.1);
             text-align: center;
         }
-        .contact-container h1 {
-            color: #222;
-            margin-bottom: 20px;
+        h1 {
+            color: #333;
+            text-align: center;
         }
-        .contact-container p {
+        p {
             font-size: 18px;
             color: #555;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         form label {
-            font-size: 16px;
+            font-size: 18px;
             color: #333;
-            text-align: left;
-            display: block;
         }
-        form input, form textarea {
+        form input, form textarea, form button {
+            display: block;
             width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            font-size: 15px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
             border: 1px solid #ccc;
-            border-radius: 6px;
+            border-radius: 5px;
         }
         form button {
-            padding: 12px 20px;
-            font-size: 16px;
-            color: white;
             background-color: #28a745;
+            color: white;
             border: none;
-            border-radius: 6px;
             cursor: pointer;
         }
         form button:hover {
             background-color: #218838;
         }
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
     </style>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 </head>
 <body>
+
+    <!-- Homepage Banner Ad -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5467190410358033"
+        data-ad-slot="8350573784"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     <header>
         <div class="logo">
@@ -108,11 +99,16 @@
             </ul>
         </nav>
     </header>
-
     <div class="contact-container">
         <h1>Contact Us</h1>
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
+
+        {% if success_message %}
+            <div class="message-box success">{{ success_message }}</div>
+        {% elif error_message %}
+            <div class="message-box error">{{ error_message }}</div>
+        {% endif %}
 
         <form action="/submit_contact" method="post">
             <label for="name">Name:</label>
@@ -127,6 +123,5 @@
             <button type="submit">Send Message</button>
         </form>
     </div>
-
 </body>
 </html>
