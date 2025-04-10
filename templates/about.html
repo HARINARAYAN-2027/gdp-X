@@ -2,33 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About India’s GDP</title>
+
+    <!-- Google AdSense Script (Optional) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
+        crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e6e6e6;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ddd;
+        }
         .about-container {
-            max-width: 800px;
+            max-width: 850px;
             margin: 50px auto;
-            padding: 20px;
-            background: rgb(248, 244, 244);
+            padding: 30px;
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .about-container h1 {
+            color: #222;
             text-align: center;
+            margin-bottom: 25px;
         }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #555;
+        .about-container p {
+            color: #444;
             font-size: 18px;
             text-align: justify;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
-     <!-- Header -->
-     <header>
+
+    <!-- Header -->
+    <header>
         <div class="logo">
             <h1>GDP Predictor</h1>
         </div>
@@ -41,6 +85,8 @@
             </ul>
         </nav>
     </header>
+
+    <!-- About Content -->
     <div class="about-container">
         <h1>About India's GDP</h1>
         <p>India's Gross Domestic Product (GDP) represents the monetary value of all goods and services produced within its borders in a given period. As the fifth-largest economy in the world in nominal GDP, and the third-largest in terms of purchasing power parity (PPP), India plays a vital role in the global economic landscape.</p>
@@ -50,5 +96,6 @@
         <p>Despite this, India faces challenges such as unemployment, income disparity, and inflation. The COVID-19 pandemic had a significant impact on GDP growth, but recovery has been robust, thanks to resilient domestic demand and government initiatives.</p>
         <p>India’s GDP forecasts are closely monitored worldwide, making tools like GDP Predictor valuable for tracking growth trends and making informed economic decisions.</p>
     </div>
+
 </body>
 </html>
