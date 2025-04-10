@@ -3,124 +3,102 @@ from flask_mail import Mail, Message
 import pickle
 import os
 import numpy as np
-from visualize import generate_gdp_plot  # Import visualization logic
+from visualize import generate_gdp_plot
 
-# Initialize Flask app
+# Load environment from Secret File if running on Render
+if os.path.exists("/etc/secrets/.env"):
+    from dotenv import load_dotenv
+    load_dotenv("/etc/secrets/.env")
+
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Configure Flask-Mail
+# Mail config using env vars
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com'  # Replace with your Gmail address
-app.config['MAIL_PASSWORD'] = 'your-app-password'    # Replace with your Gmail app password
-app.config['MAIL_DEFAULT_SENDER'] = 'your-email@gmail.com'  # Replace with your Gmail address
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
-# Load the trained GDP prediction model
-model_path = 'model/gdp_model.pkl'
-if os.path.exists(model_path):
-    with open(model_path, 'rb') as model_file:
-        model = pickle.load(model_file)
-    print("Model loaded successfully!")
-else:
-    raise FileNotFoundError(f"The model file was not found at: {model_path}")
+# Load model and scaler
+model_path = os.path.join(os.path.dirname(__file__), 'model', 'gdp_model.pkl')
+scaler_path = os.path.join(os.path.dirname(__file__), 'model', 'scaler.pkl')
 
-# Load the scaler
-scaler_path = 'model/scaler.pkl'
-if os.path.exists(scaler_path):
-    with open(scaler_path, 'rb') as scaler_file:
-        scaler = pickle.load(scaler_file)
-    print("Scaler loaded successfully!")
-else:
-    raise FileNotFoundError(f"The scaler file was not found at: {scaler_path}")
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
 
-# Route for Homepage
+with open(scaler_path, 'rb') as f:
+    scaler = pickle.load(f)
+
 @app.route('/')
 def home():
-    return render_template('index.html')  # Render homepage
+    return render_template('home.html')
 
-# Route for About Page
 @app.route('/about')
 def about():
-    return render_template('about.html')  # Render about page
+    return render_template('about.html')
 
-# Route for Contact Page
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')  # Render contact page
+    return render_template('contact.html')
 
-# Route for handling Contact Form submission
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
     try:
-        # Retrieve form data
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
 
-        # Validate input fields
         if not name or not email or not message:
-            return render_template(
-                'contact.html',
-                error_message="All fields are required! Please fill out the form completely."
-            )
+            return render_template('contact.html', error_message="Please fill out all fields.")
 
-        # Send email
         msg = Message(
-            subject=f"New Contact Form Submission from {name}",
-            recipients=['harinarayankumar548@gmail.com'],  
+            subject=f"Contact from {name}",
+            recipients=['harinarayankumar548@gmail.com'],
             body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
         )
         mail.send(msg)
 
-        # Show success message
-        return render_template(
-            'contact.html',
-            success_message="Thank you for reaching out! Your message has been sent successfully."
-        )
+        return render_template('contact.html', success_message="Message sent successfully.")
     except Exception as e:
-        return render_template(
-            'contact.html',
-            error_message=f"An error occurred: {str(e)}"
-        )
+        return render_template('contact.html', error_message=f"Error: {str(e)}")
 
-# Route for GDP Prediction
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get user input
         year = request.form.get('year')
         if not year or not year.isdigit():
-            return render_template('result.html', prediction_text="Invalid input. Please enter a numeric year.")
+            return render_template('result.html', prediction_text="Invalid input.")
 
         year = int(year)
-
-        # Scale the input year
         scaled_year = scaler.transform([[year]])
+        prediction = model.predict(scaled_year)[0]
 
-        # Predict GDP using the trained model
-        predicted_gdp = model.predict(scaled_year)[0]
+        plot_path = generate_gdp_plot(year, prediction)
 
-        # Generate the plot dynamically
-        plot_path = generate_gdp_plot(year, predicted_gdp)
-
-        # Render the result page
         return render_template(
             'result.html',
-            prediction_text=f"Predicted GDP for {year}: {predicted_gdp:,.2f}",
+            prediction_text=f"GDP for {year}: {prediction:,.2f}",
             plot_path=url_for('static', filename='images/plot.png')
         )
     except Exception as e:
-        # Handle errors gracefully
-        return render_template('result.html', prediction_text=f"An error occurred: {str(e)}")
+        return render_template('result.html', prediction_text=f"Error: {str(e)}")
 
-# Route for Results Page (optional placeholder)
 @app.route('/results')
 def results():
-    return render_template('result.html')  # Placeholder route to render results page
+    return render_template('result.html')
 
-# Run Flask app
+# ✅ Added Privacy Policy and Terms routes
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
