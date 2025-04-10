@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -52,11 +53,40 @@
         form button:hover {
             background-color: #218838;
         }
+        .message-box {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
     </style>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 </head>
 <body>
-     
-     <header>
+
+    <!-- Homepage Banner Ad -->
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5467190410358033"
+        data-ad-slot="8350573784"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <header>
         <div class="logo">
             <h1>GDP Predictor</h1>
         </div>
@@ -71,20 +101,25 @@
     </header>
     <div class="contact-container">
         <h1>Contact Us</h1>
-        
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
-        
+
+        {% if success_message %}
+            <div class="message-box success">{{ success_message }}</div>
+        {% elif error_message %}
+            <div class="message-box error">{{ error_message }}</div>
+        {% endif %}
+
         <form action="/submit_contact" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" required>
-            
+
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your Email" required>
-            
+
             <label for="message">Message:</label>
             <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-            
+
             <button type="submit">Send Message</button>
         </form>
     </div>
