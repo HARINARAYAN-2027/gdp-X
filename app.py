@@ -3,59 +3,47 @@ from flask_mail import Mail, Message
 import pickle
 import os
 import numpy as np
-from visualize import generate_gdp_plot  # Import visualization logic
-from dotenv import load_dotenv  # For loading .env variables
+from visualize import generate_gdp_plot
 
-# Load .env from Render's secret file path
-load_dotenv('/etc/secrets/.env')
+# Load environment from Secret File if running on Render
+if os.path.exists("/etc/secrets/.env"):
+    from dotenv import load_dotenv
+    load_dotenv("/etc/secrets/.env")
 
-# Initialize Flask app
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Configure Flask-Mail using environment variables
+# Mail config using env vars
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
-# Load trained GDP prediction model
+# Load model and scaler
 model_path = os.path.join(os.path.dirname(__file__), 'model', 'gdp_model.pkl')
-if os.path.exists(model_path):
-    with open(model_path, 'rb') as model_file:
-        model = pickle.load(model_file)
-    print("Model loaded successfully!")
-else:
-    raise FileNotFoundError(f"Model file not found at: {model_path}")
-
-# Load scaler
 scaler_path = os.path.join(os.path.dirname(__file__), 'model', 'scaler.pkl')
-if os.path.exists(scaler_path):
-    with open(scaler_path, 'rb') as scaler_file:
-        scaler = pickle.load(scaler_file)
-    print("Scaler loaded successfully!")
-else:
-    raise FileNotFoundError(f"Scaler file not found at: {scaler_path}")
 
-# Route for Homepage
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+
+with open(scaler_path, 'rb') as f:
+    scaler = pickle.load(f)
+
 @app.route('/')
 def home():
     return render_template('home.html')
 
-# Route for About Page
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-# Route for Contact Page
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
 
-# Route to handle contact form
 @app.route('/submit_contact', methods=['POST'])
 def submit_contact():
     try:
@@ -64,46 +52,44 @@ def submit_contact():
         message = request.form.get('message')
 
         if not name or not email or not message:
-            return render_template('contact.html', error_message="All fields are required! Please fill out the form completely.")
+            return render_template('contact.html', error_message="Please fill out all fields.")
 
         msg = Message(
-            subject=f"New Contact Form Submission from {name}",
-            recipients=['harinarayankumar548@gmail.com'],  # You can update this
+            subject=f"Contact from {name}",
+            recipients=['harinarayankumar548@gmail.com'],
             body=f"Name: {name}\nEmail: {email}\nMessage: {message}"
         )
         mail.send(msg)
 
-        return render_template('contact.html', success_message="Thank you for reaching out! Your message has been sent successfully.")
+        return render_template('contact.html', success_message="Message sent successfully.")
     except Exception as e:
-        return render_template('contact.html', error_message=f"An error occurred: {str(e)}")
+        return render_template('contact.html', error_message=f"Error: {str(e)}")
 
-# Route to predict GDP
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
         year = request.form.get('year')
         if not year or not year.isdigit():
-            return render_template('result.html', prediction_text="Invalid input. Please enter a numeric year.")
+            return render_template('result.html', prediction_text="Invalid input.")
 
         year = int(year)
         scaled_year = scaler.transform([[year]])
-        predicted_gdp = model.predict(scaled_year)[0]
+        prediction = model.predict(scaled_year)[0]
 
-        # Generate plot
-        plot_path = generate_gdp_plot(year, predicted_gdp)
+        plot_path = generate_gdp_plot(year, prediction)
 
-        return render_template('result.html',
-                               prediction_text=f"Predicted GDP for {year}: {predicted_gdp:,.2f}",
-                               plot_path=url_for('static', filename='images/plot.png'))
+        return render_template(
+            'result.html',
+            prediction_text=f"GDP for {year}: {prediction:,.2f}",
+            plot_path=url_for('static', filename='images/plot.png')
+        )
     except Exception as e:
-        return render_template('result.html', prediction_text=f"An error occurred: {str(e)}")
+        return render_template('result.html', prediction_text=f"Error: {str(e)}")
 
-# Optional Results page
 @app.route('/results')
 def results():
     return render_template('result.html')
 
-# Start the Flask server
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Use PORT from Render
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
