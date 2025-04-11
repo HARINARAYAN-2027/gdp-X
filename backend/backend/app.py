@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for, send_from_directory  # <-- Updated line
 from flask_mail import Mail, Message
 import pickle
 import os
@@ -98,6 +98,11 @@ def privacy():
 @app.route('/terms')
 def terms():
     return render_template('terms.html')
+
+# ✅ New ads.txt route
+@app.route('/ads.txt')
+def ads_txt():
+    return send_from_directory('.', 'ads.txt')
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
