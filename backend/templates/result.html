@@ -5,20 +5,28 @@
     <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDP Prediction Results</title>
-
-    <!-- Google AdSense Script (Optional) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
-        crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2DS4JJDM0"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Y2DS4JJDM0');
+    </script>
+
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #e6e6e6;
             margin: 0;
             padding: 0;
-            background-color: #f3f3f3;
         }
+
         header {
             background-color: #333;
             color: white;
@@ -32,63 +40,81 @@
         }
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
             display: flex;
-        }
-        nav ul li {
-            margin-left: 15px;
+            gap: 15px;
+            padding: 0;
+            margin: 0;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s ease;
         }
-        nav ul li a:hover {
-            color: #ddd;
-        }
+
         .container {
             max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            background: white;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
+
         h1 {
-            color: #222;
-            margin-bottom: 20px;
+            color: #333;
         }
+
         p {
             font-size: 18px;
             color: #444;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
+
         img {
-            border: 2px solid #ccc;
-            border-radius: 8px;
             margin-top: 20px;
             max-width: 100%;
             height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
         }
+
         .back-button {
             display: inline-block;
             margin-top: 30px;
-            padding: 12px 24px;
+            padding: 12px 25px;
             font-size: 16px;
             color: white;
             background-color: #007bff;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         .back-button:hover {
             background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 12px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Top Ad -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-5467190410358033"
+         data-ad-slot="8350573784"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
     <!-- Header -->
     <header>
@@ -105,13 +131,32 @@
         </nav>
     </header>
 
-    <!-- Results Section -->
+    <!-- Results Container -->
     <div class="container">
         <h1>GDP Prediction Results</h1>
         <p><strong>{{ prediction_text }}</strong></p>
         <img src="{{ plot_path }}" alt="GDP Prediction Plot">
+
+        <!-- Ad in Between -->
+        <div style="margin: 30px 0;">
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-5467190410358033"
+                data-ad-slot="8350573784"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
         <a href="/" class="back-button">Back to Home</a>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 GDP Predictor. All rights reserved.</p>
+    </footer>
 
 </body>
 </html>
