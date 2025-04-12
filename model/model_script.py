@@ -5,19 +5,19 @@ from sklearn.preprocessing import StandardScaler
 import pickle
 import os
 
-# File path for the dataset
+
 file_path = 'c:/Users/harin/OneDrive/Desktop/gdp-prediction-website/backend/model/india_gdp/gdp.csv'
 
 try:
-    #Load the Dataset
+    
     data = pd.read_csv(file_path, skiprows=4)  # Skip the first 4 rows to get the correct header
     print("Dataset loaded successfully!")
     
-    #  Filter Relevant Data for GDP
+ 
     gdp_data = data[data['Indicator Name'] == 'GDP (current US$)']  # Filter for GDP indicator
     print(f"GDP Data filtered. Shape: {gdp_data.shape}")
 
-    #  Reshape and Clean Data
+   
     gdp_data = gdp_data.drop(columns=['Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'], errors='ignore')  # Drop unnecessary columns
     gdp_data = gdp_data.melt(id_vars=[], var_name='year', value_name='gdp')  
     gdp_data['year'] = pd.to_numeric(gdp_data['year'], errors='coerce')  
