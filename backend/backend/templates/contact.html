@@ -7,7 +7,7 @@
     <title>Contact Us</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <!-- Google Analytics -->
+   
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2DS4JJDM0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,7 +16,7 @@
         gtag('config', 'G-Y2DS4JJDM0');
     </script>
 
-    <!-- AdSense -->
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 
     <style>
@@ -126,7 +126,7 @@
 </head>
 <body>
 
-    <!-- AdSense Banner -->
+    
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-5467190410358033"
@@ -154,7 +154,7 @@
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
 
-        <!-- Show message only when present -->
+        
         {% if success_message %}
             <div class="message-box success">{{ success_message }}</div>
         {% elif error_message %}
@@ -193,7 +193,7 @@
         </div>
     </footer>
 
-    <!-- Optional: Hide message after 5 seconds -->
+    
     <script>
         setTimeout(() => {
             const msgBox = document.querySelector('.message-box');
