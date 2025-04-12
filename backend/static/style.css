@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,19 +7,19 @@
 }
 
 body {
-    background-color: #f4f4f9; /* Soft gray background */
-    color: #333; /* Dark gray text for readability */
+    background-color: #f4f4f9;
+    color: #333; 
     line-height: 1.6;
 }
 
 a {
     text-decoration: none;
-    color: #007bff; /* Bright blue links */
+    color: #007bff; 
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3; 
 }
 
 /* Header Styling */
