@@ -1,18 +1,18 @@
-from flask import Flask, render_template, request, url_for, send_from_directory  # <-- Updated line
+from flask import Flask, render_template, request, url_for, send_from_directory 
 from flask_mail import Mail, Message
 import pickle
 import os
 import numpy as np
 from visualize import generate_gdp_plot
 
-# Load environment from Secret File if running on Render
+
 if os.path.exists("/etc/secrets/.env"):
     from dotenv import load_dotenv
     load_dotenv("/etc/secrets/.env")
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-# Mail config using env vars
+
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -22,7 +22,7 @@ app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
 
 mail = Mail(app)
 
-# Load model and scaler
+
 model_path = os.path.join(os.path.dirname(__file__), 'model', 'gdp_model.pkl')
 scaler_path = os.path.join(os.path.dirname(__file__), 'model', 'scaler.pkl')
 
@@ -90,7 +90,7 @@ def predict():
 def results():
     return render_template('result.html')
 
-# ✅ Added Privacy Policy and Terms routes
+
 @app.route('/privacy')
 def privacy():
     return render_template('privacy.html')
@@ -99,7 +99,7 @@ def privacy():
 def terms():
     return render_template('terms.html')
 
-# ✅ New ads.txt route
+
 @app.route('/ads.txt')
 def ads_txt():
     return send_from_directory('.', 'ads.txt')
