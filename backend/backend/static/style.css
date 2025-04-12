@@ -6,45 +6,45 @@
     font-family: 'Arial', sans-serif;
 }
 
+/* Base Styling */
 body {
-    background-color: #f4f4f9; /* Soft gray background */
-    color: #333; /* Dark gray text for readability */
+    background-color: #f4f4f9;
+    color: #333;
     line-height: 1.6;
 }
 
 a {
     text-decoration: none;
-    color: #007bff; /* Bright blue links */
+    color: #007bff;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3;
 }
 
 /* Header Styling */
 header {
-    background-color: #333; /* Dark header background */
+    background-color: #333;
     color: white;
     padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 header .logo h1 {
-    font-size: 24px;
+    font-size: 26px;
+    color: #28a745;
     margin: 0;
-    color: #28a745; /* Green logo color */
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-}
-
-header nav ul li {
-    margin: 0 10px;
+    gap: 15px;
+    padding: 0;
 }
 
 header nav ul li a {
@@ -55,12 +55,12 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #ffc107; /* Golden hover effect */
+    color: #ffc107;
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(to right, #333, #28a745); /* Gradient background */
+    background: linear-gradient(to right, #333, #28a745);
     color: white;
     text-align: center;
     padding: 80px 20px;
@@ -78,13 +78,13 @@ header nav ul li a:hover {
 .hero .cta-button {
     margin-top: 20px;
     padding: 10px 30px;
-    background-color: #ffc107; /* Golden button */
+    background-color: #ffc107;
     color: #333;
     border: none;
     border-radius: 5px;
     font-size: 18px;
     text-transform: uppercase;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
@@ -93,62 +93,104 @@ header nav ul li a:hover {
     color: white;
 }
 
-/* Main Content */
-main {
-    padding: 20px;
+/* Main Container */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.container h1 {
+    font-size: 32px;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 30px;
+}
+
+.container p {
+    font-size: 17px;
+    color: #555;
+    margin: 15px 0;
+}
+
+/* Form Section */
 .form-section {
     background: white;
     padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin: 20px auto;
     max-width: 600px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.form-section h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
 }
 
 .form-section label {
     display: block;
-    font-size: 18px;
-    margin-top: 15px;
-    color: #555;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 6px;
 }
 
-.form-section input, 
-.form-section textarea, 
+.form-section input,
+.form-section textarea,
 .form-section button {
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
+    border-radius: 6px;
     font-size: 16px;
 }
 
-.form-section input:focus, 
+.form-section input:focus,
 .form-section textarea:focus {
     outline: none;
-    border-color: #28a745; /* Green focus effect */
+    border-color: #28a745;
 }
 
 .form-section button {
-    background-color: #28a745; /* Green button */
+    background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
-    font-size: 18px;
     transition: background-color 0.3s ease;
 }
 
 .form-section button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838;
+}
+
+/* Image in Results Page */
+.container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 2px solid #ccc;
+}
+
+/* Button */
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
 }
 
 /* Footer Styling */
@@ -156,32 +198,12 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 15px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer p {
-    margin: 0;
+    padding: 20px;
+    margin-top: 50px;
     font-size: 14px;
 }
 
-footer .social-media {
-    margin-top: 10px;
-}
-
-footer .social-media img {
-    width: 20px;
-    margin: 0 5px;
-    transition: transform 0.3s ease;
-}
-
-footer .social-media img:hover {
-    transform: scale(1.2); /* Slight zoom effect */
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -190,15 +212,8 @@ footer .social-media img:hover {
 
     header nav ul {
         flex-direction: column;
+        gap: 10px;
         margin-top: 10px;
-    }
-
-    header nav ul li {
-        margin: 5px 0;
-    }
-
-    .form-section {
-        width: 90%;
     }
 
     .hero h1 {
@@ -207,5 +222,14 @@ footer .social-media img:hover {
 
     .hero p {
         font-size: 16px;
+    }
+
+    .container {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .form-section {
+        width: 90%;
     }
 }
