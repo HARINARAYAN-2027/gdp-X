@@ -10,87 +10,79 @@
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2DS4JJDM0"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Y2DS4JJDM0');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Y2DS4JJDM0');
     </script>
 
     <!-- AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 
-    <!-- CMP -->
-    <script async src="https://fundingchoicesmessages.google.com/i/pub-5467190410358033?ers=1" nonce="cmp"></script>
-    <script nonce="cmp">
-        (function() {
-          window.__cmp = window.__cmp || function() {
-            (window.__cmp.q = window.__cmp.q || []).push(arguments)
-          };
-        })();
-    </script>
-
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #e3e3e3;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
         }
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
+            background-color: #0d1a26;
             color: white;
-            padding: 10px 20px;
-        }
-        header .logo h1 {
-            margin: 0;
+            padding: 20px;
+            text-align: center;
         }
         nav ul {
             list-style: none;
-            display: flex;
-            gap: 15px;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #1c2b36;
             margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
         }
         nav ul li a {
             color: white;
             text-decoration: none;
+            padding: 15px;
+            display: block;
         }
-
+        nav ul li a:hover {
+            background-color: #2e4a5f;
+        }
         .contact-container {
             max-width: 600px;
             margin: 40px auto;
-            background: #f4f4f4;
-            padding: 25px;
+            background: white;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #333;
+            color: #003366;
         }
         p {
-            font-size: 18px;
+            font-size: 16px;
             color: #555;
         }
         form label {
-            font-size: 16px;
             font-weight: bold;
             margin-top: 10px;
             display: block;
-            color: #444;
+            color: #333;
         }
         form input, form textarea {
             width: 100%;
             padding: 10px;
-            font-size: 15px;
             margin: 8px 0;
+            font-size: 15px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
         form button {
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
             border: none;
             padding: 12px;
@@ -100,12 +92,13 @@
             margin-top: 10px;
         }
         form button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
         }
         .message-box {
             margin-top: 15px;
-            padding: 10px;
+            padding: 12px;
             border-radius: 5px;
+            font-weight: bold;
         }
         .success {
             background-color: #d4edda;
@@ -119,14 +112,14 @@
         }
 
         footer {
-            background-color: #333;
+            background-color: #0d1a26;
             color: white;
             text-align: center;
-            padding: 12px 0;
-            margin-top: 50px;
+            padding: 20px;
+            margin-top: 60px;
         }
         footer .social-media img {
-            width: 20px;
+            width: 24px;
             margin: 0 8px;
         }
     </style>
@@ -144,27 +137,24 @@
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 
-    <!-- Header -->
     <header>
-        <div class="logo">
-            <h1>GDP Predictor</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/results">Results</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Contact Form -->
-    <div class="contact-container">
         <h1>Contact Us</h1>
+        <p>We'd love to hear from you!</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/results">Results</a></li>
+        </ul>
+    </nav>
+
+    <div class="contact-container">
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
 
+        <!-- Show message only when present -->
         {% if success_message %}
             <div class="message-box success">{{ success_message }}</div>
         {% elif error_message %}
@@ -183,22 +173,8 @@
 
             <button type="submit">Send Message</button>
         </form>
-
-        <!-- Another Ad Block (optional) -->
-        <div style="margin-top: 20px;">
-            <ins class="adsbygoogle"
-                style="display:block"
-                data-ad-client="ca-pub-5467190410358033"
-                data-ad-slot="8350573784"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 GDP Predictor. All rights reserved.</p>
         <div class="social-media">
@@ -217,5 +193,12 @@
         </div>
     </footer>
 
+    <!-- Optional: Hide message after 5 seconds -->
+    <script>
+        setTimeout(() => {
+            const msgBox = document.querySelector('.message-box');
+            if (msgBox) msgBox.style.display = 'none';
+        }, 5000);
+    </script>
 </body>
 </html>
