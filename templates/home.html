@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDP Prediction - India</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0d1a26;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #1c2b36;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+        }
+        nav ul li a:hover {
+            background-color: #2e4a5f;
+        }
+        main {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .form-section, .gdp-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        .form-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        label, input, button {
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        input[type="number"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 15px;
+            background-color: #006400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d00;
+        }
+        .gdp-info h3 {
+            margin-top: 0;
+            color: #003366;
+        }
+        .gdp-info p {
+            line-height: 1.8;
+            color: #333;
+        }
+        footer {
+            background-color: #0d1a26;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .social-media {
+            margin-top: 20px;
+        }
+        .social-media a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        footer .privacy-links a {
+            color: white;
+            text-decoration: underline;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GDP Predictor - India</h1>
+        <p>Explore India's Economic Growth Through Smart Predictions</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/results">Results</a></li>
+        </ul>
+    </nav>
+    <main>
+  <section class="form-section">
+    <h2>Predict the GDP of a Future Year</h2>
+    <form action="{{ url_for('predict') }}" method="POST">
+      <label for="year">Enter Year:</label>
+      <input
+        type="number"
+        id="year"
+        name="year"
+        placeholder="e.g., 2025"
+        required
+        min="2000"
+        max="2200"
+      >
+      <button type="submit">Predict</button>
+    </form>
+  </section>
+
+        <section class="gdp-info">
+            <h3>What is GDP?</h3>
+            <p>Gross Domestic Product (GDP) is the total monetary value of all finished goods and services produced within a country's borders in a specific time period. It is a comprehensive measure of a nation's overall economic activity. GDP is widely used to compare the economic health of different countries and to track the growth or contraction of a national economy.</p>
+
+            <h3>India's GDP: A Journey of Growth</h3>
+            <p>India, one of the fastest-growing economies in the world, has witnessed tremendous transformation over the decades. From an agriculture-dominated economy to a booming services and tech industry, India’s GDP reflects its resilience and innovation. As of 2025, India stands as the fifth-largest economy globally in nominal GDP terms.</p>
+
+            <h3>Key Drivers of India’s GDP</h3>
+            <ul>
+                <li><strong>Agriculture:</strong> Agriculture continues to be a major contributor to India's GDP, despite the country's rapid industrialization. The sector, which includes farming, fishing, and forestry, employs a large percentage of the population, particularly in rural areas.</li>
+                <li><strong>Manufacturing:</strong> The manufacturing sector has become one of the largest contributors to India’s GDP, driven by industries such as automobiles, textiles, steel, and chemicals. The 'Make in India' initiative has been instrumental in boosting this sector.</li>
+                <li><strong>Services Sector:</strong> The services sector is the largest contributor to India’s GDP. This sector includes IT services, telecommunications, banking, finance, healthcare, and tourism. India is home to one of the world’s largest IT outsourcing industries.</li>
+                <li><strong>Digital India:</strong> India’s Digital Revolution has brought technology into the hands of millions, with initiatives such as the Digital India campaign promoting digital literacy, mobile internet, and e-commerce, thereby expanding the economy.</li>
+            </ul>
+
+            <h3>Historical Trends in India’s GDP Growth</h3>
+            <p>India’s economic growth has been variable, influenced by factors like policy changes, global economic conditions, and domestic challenges. From the early post-independence years, when the economy was primarily agricultural, India transitioned into an industrializing and eventually a service-oriented economy. The economic liberalization of 1991 marked a turning point, ushering in faster growth rates.</p>
+            <p>In the last decade, India has seen significant economic reforms, which have helped sustain growth, even as global growth slowed. Despite challenges such as inflation, global financial crises, and the COVID-19 pandemic, India has shown resilience and continues to grow at a rate higher than many other economies.</p>
+
+            <h3>India’s GDP by Sector</h3>
+            <p>India’s GDP is divided into three main sectors:</p>
+            <ul>
+                <li><strong>Agriculture:</strong> Contributes around 18% to India’s GDP, although its share in employment is much higher, with over 50% of the workforce depending on agriculture.</li>
+                <li><strong>Industry:</strong> The industrial sector, which includes manufacturing and construction, contributes around 29% to GDP. The sector has been expanding with the growth of infrastructure and the rise of the manufacturing sector under the 'Make in India' initiative.</li>
+                <li><strong>Services:</strong> The services sector is the dominant sector, contributing over 53% to India’s GDP. It is driven by IT services, telecommunications, finance, insurance, healthcare, and business services, among others.</li>
+            </ul>
+
+            <h3>Regional Contributions to GDP</h3>
+            <p>India is a vast and diverse country, and different regions contribute in unique ways to its economic output. For example, the southern states of India, including Karnataka, Tamil Nadu, and Andhra Pradesh, are known for their tech hubs in cities like Bengaluru and Hyderabad, which significantly contribute to the services sector of GDP. In contrast, states like Maharashtra and Gujarat are industrial powerhouses, contributing heavily through manufacturing and trade.</p>
+            <p>Regional disparities exist, with some states performing better economically, owing to factors such as industrial development, infrastructure, and human capital development. The central government has introduced various initiatives to promote balanced regional development.</p>
+
+            <h3>Challenges Facing India’s GDP Growth</h3>
+            <p>While India’s GDP growth remains strong, there are several challenges that continue to affect the economy’s potential:</p>
+            <ul>
+                <li><strong>Poverty:</strong> Despite the overall economic growth, a significant portion of India’s population still lives in poverty, primarily in rural areas.</li>
+                <li><strong>Unemployment:</strong> High levels of unemployment, particularly among the youth, remain a significant issue. There is also a growing concern regarding underemployment.</li>
+                <li><strong>Income Inequality:</strong> Although India’s economy has grown, income inequality has worsened, with a rising gap between the rich and poor.</li>
+                <li><strong>Infrastructure Deficiencies:</strong> Insufficient infrastructure, particularly in rural areas, can limit productivity and hinder overall economic growth.</li>
+            </ul>
+
+            <h3>Future Outlook for India's GDP</h3>
+            <p>India is projected to continue growing rapidly over the next several decades, driven by demographic advantages and increased global integration. The country’s youth population, which is expected to remain one of the largest in the world, will contribute significantly to the workforce. Additionally, India’s increasing global connectivity through trade agreements, digital advancements, and investment in infrastructure will further bolster growth.</p>
+            <p>By 2030, India is expected to become the third-largest economy in the world in nominal terms, behind only the United States and China. This growth will be supported by:</p>
+            <ul>
+                <li><strong>Urbanization:</strong> As India’s urban population increases, the shift from rural to urban living will fuel demand for goods and services, further stimulating growth.</li>
+                <li><strong>Education and Skill Development:</strong> India is investing heavily in education, particularly in science, technology, engineering, and mathematics (STEM) fields, which will ensure a skilled workforce for the future.</li>
+                <li><strong>Infrastructure Investment:</strong> Continued investments in infrastructure, including transportation, energy, and urbanization, will boost economic productivity and output.</li>
+                <li><strong>Government Reforms:</strong> Reforms in sectors like taxation (GST), labor laws, and foreign investment policies are expected to improve the ease of doing business and attract more investments.</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 GDP Predictor - India. All rights reserved.</p>
+        <div class="social-media">
+            <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+            <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+            <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+            <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+        </div>
+        <div class="privacy-links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms">Terms & Conditions</a>
+        </div>
+    </footer>
+</body>
+</html>

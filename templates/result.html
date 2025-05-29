@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-adsense-account" content="ca-pub-5467190410358033">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GDP Prediction Results</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2DS4JJDM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-Y2DS4JJDM0');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
+    crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0d1a26;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background-color: #1c2b36;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      display: block;
+    }
+    nav ul li a:hover {
+      background-color: #2e4a5f;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #003366;
+    }
+    p {
+      font-size: 18px;
+      color: #444;
+      margin: 20px 0;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    .back-button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 16px;
+      color: white;
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    .back-button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #0d1a26;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .social-media {
+      margin-top: 20px;
+    }
+    .social-media a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+    .social-media img {
+      width: 30px;
+      height: 30px;
+    }
+    footer .privacy-links a {
+      color: white;
+      text-decoration: underline;
+      margin-right: 10px;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .container {
+        padding: 20px;
+      }
+      footer .social-media a {
+        margin: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Ad -->
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-5467190410358033"
+    data-ad-slot="8350573784"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+  <!-- Header -->
+  <header>
+    <h1>GDP Predictor</h1>
+    <p>Behind the Vision of Smarter Economic Insights</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      <li><a href="{{ url_for('results') }}">Results</a></li>
+    </ul>
+  </nav>
+
+  <!-- Results Container -->
+  <div class="container">
+    <h1>GDP Prediction Results</h1>
+    <p><strong>{{ prediction_text }}</strong></p>
+
+    {% if plot_path %}
+      <img src="{{ url_for('static', filename=plot_path) }}?v={{ random() }}" alt="GDP Prediction Graph">
+    {% else %}
+      <p>No graph available.</p>
+    {% endif %}
+
+    <!-- In-content Ad -->
+    <div style="margin: 30px 0;">
+      <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-5467190410358033"
+        data-ad-slot="8350573784"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="back-button">Back to Home</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 GDP Prediction Website. All Rights Reserved.</p>
+    <div class="privacy-links">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+      </a>
+      <a href="https://www.instagram.com/harinarayan_kumar_official/" target="_blank">
+        <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/in/harinarayankumarpal/" target="_blank">
+        <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
