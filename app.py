@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 import flask_mail
 import random  # Add this import
+import gunicorn
 
 # Import the function from visualize.py
 from visualize import generate_gdp_plot
