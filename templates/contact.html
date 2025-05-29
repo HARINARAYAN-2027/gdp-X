@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="google-adsense-account" content="ca-pub-5467190410358033">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Contact Us - GDP Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <!-- Google Analytics -->
@@ -16,95 +16,108 @@
         gtag('config', 'G-Y2DS4JJDM0');
     </script>
 
-    <!-- AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033"
+        crossorigin="anonymous"></script>
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
             margin: 0;
             padding: 0;
         }
+
         header {
             background-color: #0d1a26;
-            color: white;
-            padding: 20px;
+            color: #fff;
             text-align: center;
+            padding: 25px 10px;
         }
+
         nav ul {
             list-style: none;
+            margin: 0;
             padding: 0;
+            background-color: #1c2b36;
             display: flex;
             justify-content: center;
-            background-color: #1c2b36;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
             margin: 0;
         }
-        nav ul li {
-            margin: 0 15px;
-        }
+
         nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px;
             display: block;
+            padding: 14px 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s ease;
         }
+
         nav ul li a:hover {
             background-color: #2e4a5f;
         }
+
         .contact-container {
-            max-width: 600px;
-            margin: 40px auto;
-            background: white;
+            max-width: 650px;
+            background: #fff;
+            margin: 50px auto;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
-        h1 {
-            color: #003366;
+
+        h1, p {
+            margin-bottom: 20px;
         }
-        p {
-            font-size: 16px;
-            color: #555;
-        }
+
         form label {
             font-weight: bold;
-            margin-top: 10px;
             display: block;
+            margin-top: 15px;
             color: #333;
         }
+
         form input, form textarea {
             width: 100%;
             padding: 10px;
-            margin: 8px 0;
-            font-size: 15px;
+            margin-top: 8px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            font-size: 15px;
         }
+
         form button {
             background-color: #007bff;
             color: white;
+            padding: 12px 20px;
             border: none;
-            padding: 12px;
-            font-size: 16px;
-            cursor: pointer;
             border-radius: 5px;
-            margin-top: 10px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
         }
+
         form button:hover {
             background-color: #0056b3;
         }
+
         .message-box {
-            margin-top: 15px;
             padding: 12px;
             border-radius: 5px;
+            margin-top: 20px;
             font-weight: bold;
         }
+
         .success {
             background-color: #d4edda;
             color: #155724;
             border: 1px solid #c3e6cb;
         }
+
         .error {
             background-color: #f8d7da;
             color: #721c24;
@@ -118,9 +131,18 @@
             padding: 20px;
             margin-top: 60px;
         }
+
         footer .social-media img {
             width: 24px;
-            margin: 0 8px;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 600px) {
+            .contact-container {
+                margin: 20px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -128,11 +150,11 @@
 
     <!-- AdSense Banner -->
     <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-5467190410358033"
-         data-ad-slot="8350573784"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
+        style="display:block"
+        data-ad-client="ca-pub-5467190410358033"
+        data-ad-slot="8350573784"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
@@ -141,6 +163,7 @@
         <h1>Contact Us</h1>
         <p>We'd love to hear from you!</p>
     </header>
+
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
@@ -154,7 +177,7 @@
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
 
-        <!-- Show message only when present -->
+        <!-- Flash messages -->
         {% if success_message %}
             <div class="message-box success">{{ success_message }}</div>
         {% elif error_message %}
@@ -193,11 +216,11 @@
         </div>
     </footer>
 
-    <!-- Optional: Hide message after 5 seconds -->
+    <!-- Optional: Auto-hide messages -->
     <script>
         setTimeout(() => {
-            const msgBox = document.querySelector('.message-box');
-            if (msgBox) msgBox.style.display = 'none';
+            const box = document.querySelector('.message-box');
+            if (box) box.style.display = 'none';
         }, 5000);
     </script>
 </body>
