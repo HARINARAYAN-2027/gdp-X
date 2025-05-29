@@ -1,40 +1,38 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import os
 import random
-from dotenv import load_dotenv  # ✅ For loading environment variables
+from dotenv import load_dotenv
 from flask_mail import Mail, Message
-from visualize import generate_gdp_plot  # ✅ Import your GDP prediction logic
+from visualize import generate_gdp_plot
 
-# ✅ Load environment variables from .env file
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Flash messages ke liye zaroori
+app.secret_key = 'your_secret_key'
 
-# ✅ Flask-Mail configuration using environment variables
+# Mail Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # From .env
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # From .env
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
 
 mail = Mail(app)
 
-# ✅ Create plot folder if it doesn't exist
 PLOT_FOLDER = os.path.join('static', 'images')
 os.makedirs(PLOT_FOLDER, exist_ok=True)
 
-# ✅ Home route
+# ✅ Home Route
 @app.route('/')
 def home():
     return render_template('home.html')
 
-# ✅ About route
+# ✅ About Route
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-# ✅ Contact route with mail functionality
+# ✅ Contact Route
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -45,7 +43,7 @@ def contact():
         msg = Message(
             subject=f"New message from {name}",
             sender=app.config['MAIL_USERNAME'],
-            recipients=[app.config['MAIL_USERNAME']],  # Email to yourself
+            recipients=[app.config['MAIL_USERNAME']],
             body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
         )
 
@@ -58,12 +56,12 @@ def contact():
         return redirect(url_for('contact'))
     return render_template('contact.html')
 
-# ✅ Results route (optional)
+# ✅ Results Route
 @app.route('/results')
 def results():
     return redirect(url_for('home'))
 
-# ✅ GDP Prediction route
+# ✅ GDP Prediction Route
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -77,11 +75,21 @@ def predict():
             'result.html',
             prediction_text=prediction_text,
             plot_path=rel_plot_path.replace(os.sep, "/"),
-            random=random.random  # For cache busting in img src
+            random=random.random
         )
     except Exception as e:
         return f"Error: {e}"
 
-# ✅ Run locally (only if not on Render)
+# ✅ Privacy Policy Route
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
+# ✅ Terms & Conditions Route
+@app.route('/terms')
+def terms():
+    return render_template('terms.html')
+
+# ✅ Run App
 if __name__ == '__main__':
     app.run(debug=True)
