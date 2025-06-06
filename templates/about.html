@@ -5,85 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - GDP Predictor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #0d1a26;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #1c2b36;
-            margin: 0;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            display: block;
-        }
-        nav ul li a:hover {
-            background-color: #2e4a5f;
-        }
-        main {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .about-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .about-section h2 {
-            color: #003366;
-            margin-bottom: 20px;
-        }
-        .about-section p {
-            color: #333;
-            line-height: 1.8;
-        }
-        .about-section ul {
-            margin-top: 15px;
-            padding-left: 20px;
-        }
-        .about-section li {
-            margin-bottom: 10px;
-        }
-        footer {
-            background-color: #0d1a26;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-        .social-media {
-            margin-top: 20px;
-        }
-        .social-media a {
-            margin: 0 10px;
-            display: inline-block;
-        }
-        footer .privacy-links a {
-            color: white;
-            text-decoration: underline;
-            margin-right: 10px;
-        }
-    </style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
+
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #edf1f5, #e4efff);
+        color: #222;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        letter-spacing: 1px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        background-color: #1c2b36;
+        padding: 10px 0;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    nav ul li {
+        margin: 0 20px;
+        position: relative;
+    }
+
+    nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 17px;
+        padding: 10px 15px;
+        display: block;
+    }
+
+    nav ul li a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 5px;
+        height: 2px;
+        width: 0;
+        background: #00e0ff;
+        transition: width 0.3s;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%;
+    }
+
+    nav ul li a:hover {
+        color: #00e0ff;
+    }
+
+    main {
+        padding: 50px 20px;
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .about-section {
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .about-section h2 {
+        font-size: 26px;
+        color: #002244;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .about-section p {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.9;
+        margin-bottom: 15px;
+    }
+
+    .about-section ul {
+        padding-left: 25px;
+        margin-top: 15px;
+    }
+
+    .about-section li {
+        margin-bottom: 12px;
+        font-size: 16px;
+    }
+
+    footer {
+        background-color: #0d1a26;
+        color: #fff;
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 60px;
+        font-size: 15px;
+    }
+
+    .social-media {
+        margin-top: 20px;
+    }
+
+    .social-media a {
+        margin: 0 12px;
+        display: inline-block;
+        color: #ccc;
+        font-size: 20px;
+        transition: transform 0.3s, color 0.3s;
+    }
+
+    .social-media a:hover {
+        transform: scale(1.2);
+        color: #00e0ff;
+    }
+
+    footer .privacy-links {
+        margin-top: 10px;
+    }
+
+    footer .privacy-links a {
+        color: #aaa;
+        text-decoration: underline;
+        margin: 0 8px;
+        font-size: 14px;
+    }
+
+    footer .privacy-links a:hover {
+        color: #00e0ff;
+    }
+</style>
+
 </head>
 <body>
     <header>
