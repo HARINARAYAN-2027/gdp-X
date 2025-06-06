@@ -17,4 +17,3 @@ news = [
         "image": "inflation.jpg"
     }
 ]
-
