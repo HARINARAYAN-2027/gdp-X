@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2DS4JJDM0"></script>
@@ -18,113 +19,147 @@
     <!-- AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5467190410358033" crossorigin="anonymous"></script>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-        header {
-            background-color: #0d1a26;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #eef2f3, #d9e2ec);
+        color: #222;
+        line-height: 1.6;
+    }
+
+    header {
+        background: linear-gradient(135deg, #0d1a26, #1e2f45);
+        color: white;
+        padding: 30px 15px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 600;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        background-color: #1c2b36;
+        margin: 0;
+        padding: 0;
+        flex-wrap: wrap;
+    }
+
+    nav ul li {
+        margin: 0 12px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        display: block;
+        font-weight: 500;
+        transition: background 0.3s, transform 0.3s;
+    }
+
+    nav ul li a:hover {
+        background-color: #2e4a5f;
+        transform: translateY(-2px);
+    }
+
+    .container {
+        max-width: 850px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.97);
+        padding: 40px 30px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        backdrop-filter: blur(10px);
+        animation: slideFade 0.7s ease;
+    }
+
+    @keyframes slideFade {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h1, h2 {
+        color: #003366;
+        font-weight: 600;
+    }
+
+    h2 {
+        margin-top: 25px;
+    }
+
+    p {
+        font-size: 17px;
+        color: #444;
+        margin: 10px 0;
+    }
+
+    footer {
+        background: linear-gradient(135deg, #0d1a26, #1e2f45);
+        color: white;
+        text-align: center;
+        padding: 25px 15px;
+        margin-top: 60px;
+        font-size: 15px;
+    }
+
+    .social-media {
+        margin-top: 20px;
+    }
+
+    .social-media a {
+        margin: 0 10px;
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .social-media a:hover {
+        transform: scale(1.2);
+    }
+
+    footer .privacy-links a {
+        color: white;
+        text-decoration: underline;
+        margin-right: 10px;
+    }
+
+    @media (max-width: 768px) {
         nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #1c2b36;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            display: block;
-        }
-
-        nav ul li a:hover {
-            background-color: #2e4a5f;
+            flex-direction: column;
+            align-items: center;
         }
 
         .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            padding: 25px 20px;
+            margin: 30px 15px;
         }
 
-        h1 {
-            color: #003366;
+        nav ul li a {
+            padding: 12px 18px;
         }
 
-        h2 {
-            color: #003366;
-            margin-top: 20px;
+        footer .social-media a {
+            margin: 5px;
         }
+    }
+</style>
 
-        p {
-            font-size: 18px;
-            color: #444;
-            margin: 10px 0;
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #0d1a26;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-        }
-
-        .social-media {
-            margin-top: 20px;
-        }
-
-        .social-media a {
-            margin: 0 10px;
-            display: inline-block;
-        }
-
-        footer .privacy-links a {
-            color: white;
-            text-decoration: underline;
-            margin-right: 10px;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .container {
-                padding: 20px;
-            }
-
-            footer .social-media {
-                text-align: center;
-            }
-
-            footer .social-media a {
-                margin: 5px;
-            }
-        }
-    </style>
 </head>
 <body>
 
