@@ -4,7 +4,7 @@ import random
 from dotenv import load_dotenv
 from flask_mail import Mail, Message
 from visualize import generate_gdp_plot 
-
+from news_data import news
 
 load_dotenv()
 
@@ -23,14 +23,6 @@ mail = Mail(app)
 
 PLOT_FOLDER = os.path.join('static', 'images')
 os.makedirs(PLOT_FOLDER, exist_ok=True)
-
-
-
-
-@app.route('/')
-def home():
-    return render_template('home.html')
-
 
 @app.route('/about')
 def about():
@@ -94,6 +86,10 @@ def terms():
 @app.route('/results')
 def results():
     return redirect(url_for('home'))
+
+@app.route('/')
+def home():
+    return render_template('home.html', news=news)
 
 
 if __name__ == '__main__':
