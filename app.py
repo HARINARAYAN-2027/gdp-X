@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from flask_mail import Mail, Message
 from visualize import generate_gdp_plot 
 from news_data import news
-
+from news_descriptions import descriptions
 load_dotenv()
 
 app = Flask(__name__)
@@ -87,9 +87,12 @@ def terms():
 def results():
     return redirect(url_for('home'))
 
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('home.html', news=news)
+    
+    for item in news:
+        item['description'] = descriptions.get(item['image'], "No description available.")
+    return render_template("home.html", news=news)
 
 
 if __name__ == '__main__':
