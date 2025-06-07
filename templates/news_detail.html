@@ -4,13 +4,125 @@
     <meta charset="UTF-8">
     <title>{{ news.title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        nav {
+            background-color: #1c2b36;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+        }
+
+        nav ul li a:hover {
+            background-color: #2a3e52;
+            border-radius: 5px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 8px 0;
+            }
+
+            .content {
+                margin: 15px;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>{{ news.title }}</header>
-    <div style="padding: 20px; max-width: 800px; margin: auto;">
-        <img src="{{ url_for('static', filename='images/' + news.image) }}" alt="{{ news.title }}" style="max-width: 100%; border-radius: 10px;">
-        <p style="margin-top: 20px; font-size: 18px;">{{ news.description }}</p>
-        <a href="{{ url_for('home') }}" style="display: inline-block; margin-top: 20px; color: #007BFF;">← Back to Home</a>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('results') }}">Results</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <img src="{{ url_for('static', filename='images/' + news.image) }}" alt="{{ news.title }}">
+        <p>{{ news.description }}</p>
+        <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
     </div>
 </body>
 </html>
