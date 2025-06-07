@@ -7,104 +7,94 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <meta name="description" content="Predict India's GDP using smart models and explore detailed economic insights.">
- <style>
+<style>
     * {
-        box-sizing: border-box;
-        transition: all 0.3s ease-in-out;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: all 0.3s ease-in-out;
     }
 
     body {
-        font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #f0f4f8, #dbe9f4);
-        margin: 0;
-        padding: 0;
-        color: #222;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #dbe9f4);
+      color: #222;
     }
 
     header {
-        background: linear-gradient(to right, #141e30, #243b55);
-        color: #fff;
-        padding: 25px 20px;
-        text-align: center;
-        font-size: 28px;
-        font-weight: 600;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    nav ul {
-        display: flex;
-        justify-content: center;
-        list-style: none;
+    nav {
+      background-color: #1c2b36;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+
+    #nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    #nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 12px;
+      font-weight: 500;
+      border-radius: 5px;
+    }
+
+    #nav-links li a:hover {
+      background-color: #2a3e52;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
         background-color: #1c2b36;
-        margin: 0;
-        padding: 0;
-    }
+        margin-top: 10px;
+      }
 
-    nav ul li {
-        margin: 0 20px;
-    }
+      #nav-links.show {
+        display: flex;
+      }
 
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        padding: 15px 10px;
-        display: inline-block;
-        font-weight: 500;
-    }
-
-    nav ul li a:hover {
-        background-color: #2a3e52;
-        border-radius: 5px;
-    }
-
-    .news-section {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        background: #fff;
-        padding: 30px 0;
-    }
-
-    .news-container {
-        display: inline-flex;
-        animation: scrollNews 40s linear infinite;
-    }
-
-    @keyframes scrollNews {
-        0% {
-            transform: translateX(100%);
-        }
-        100% {
-            transform: translateX(-100%);
-        }
-    }
-
-    .news-card {
-        flex: 0 0 auto;
-        width: 280px;
-        margin: 0 20px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
+      #nav-links li {
         text-align: center;
-    }
-
-    .news-card img {
         width: 100%;
-        height: 180px;
-        object-fit: cover;
+        border-bottom: 1px solid #2a3e52;
+      }
     }
-
-    .news-card h3 {
-        padding: 15px;
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-    }
-</style>
-
-  
+  </style>
 
     
 </head>
@@ -114,17 +104,24 @@
         <p>Explore India's Economic Growth Through Smart Predictions</p>
     </header>
     <nav>
-        <ul>
-           
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/results">Results</a></li>
-            <li><a href="/privacy">Privacy</a></li>
-            <li><a href="/terms">Terms</a></li>
-        
-        </ul>
-    </nav>
+    <div class="nav-container">
+      <div class="hamburger" onclick="toggleMenu()">☰</div>
+      <ul id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/results">Results</a></li>
+        <li><a href="/privacy">Privacy</a></li>
+        <li><a href="/terms">Terms</a></li>
+      </ul>
+    </div>
+  </nav
+<script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
     <main>
   <section class="form-section">
     <h2>Predict the GDP of a Future Year</h2>
@@ -222,6 +219,7 @@
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms">Terms & Conditions</a>
         </div>
+        
     </footer>
 </body>
 </html>
