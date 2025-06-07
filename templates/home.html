@@ -8,97 +8,102 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <meta name="description" content="Predict India's GDP using smart models and explore detailed economic insights.">
  <style>
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease-in-out;
-        }
+    * {
+        box-sizing: border-box;
+        transition: all 0.3s ease-in-out;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f0f4f8, #dbe9f4);
-            margin: 0;
-            padding: 0;
-            color: #222;
-        }
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f0f4f8, #dbe9f4);
+        margin: 0;
+        padding: 0;
+        color: #222;
+    }
 
-        header {
-            background: linear-gradient(to right, #141e30, #243b55);
-            color: #fff;
-            padding: 25px 20px;
-            text-align: center;
-            font-size: 28px;
-            font-weight: 600;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
+    header {
+        background: linear-gradient(to right, #141e30, #243b55);
+        color: #fff;
+        padding: 25px 20px;
+        text-align: center;
+        font-size: 28px;
+        font-weight: 600;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            background-color: #1c2b36;
-            margin: 0;
-            padding: 0;
-        }
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        background-color: #1c2b36;
+        margin: 0;
+        padding: 0;
+    }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+    nav ul li {
+        margin: 0 20px;
+    }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 15px 10px;
-            display: inline-block;
-            font-weight: 500;
-        }
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 15px 10px;
+        display: inline-block;
+        font-weight: 500;
+    }
 
-        nav ul li a:hover {
-            background-color: #2a3e52;
-            border-radius: 5px;
-        }
+    nav ul li a:hover {
+        background-color: #2a3e52;
+        border-radius: 5px;
+    }
 
-        .news-section {
-            margin: 30px auto;
-            padding: 20px;
-            overflow-x: auto;
-            white-space: nowrap;
-        }
+    .news-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: #fff;
+        padding: 30px 0;
+    }
 
-        .news-card {
-            display: inline-block;
-            vertical-align: top;
-            width: 280px;
-            margin-right: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            overflow: hidden;
-            text-align: center;
-        }
+    .news-container {
+        display: inline-flex;
+        animation: scrollNews 40s linear infinite;
+    }
 
-        .news-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+    @keyframes scrollNews {
+        0% {
+            transform: translateX(100%);
         }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 
-        .news-card h3 {
-            font-size: 18px;
-            margin: 10px;
-            color: #243b55;
-        }
+    .news-card {
+        flex: 0 0 auto;
+        width: 280px;
+        margin: 0 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        text-align: center;
+    }
 
-        .news-card p {
-            font-size: 14px;
-            padding: 0 10px 10px;
-            color: #555;
-        }
+    .news-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
 
-        .news-card a {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
+    .news-card h3 {
+        padding: 15px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+    }
+</style>
+
   
 
     
@@ -188,16 +193,18 @@
                 <li><strong>Government Reforms:</strong> Reforms in sectors like taxation (GST), labor laws, and foreign investment policies are expected to improve the ease of doing business and attract more investments.</li>
             </ul>
       <div class="news-section">
-    {% for item in news %}
+    <div class="news-container">
+        {% for item in news %}
         <div class="news-card">
             <a href="{{ url_for('news_detail', news_id=item.id) }}">
-                <img src="{{ url_for('static', filename='images/' ~ item.image) }}" alt="{{ item.title }}">
+                <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.title }}">
                 <h3>{{ item.title }}</h3>
-                <p>{{ item.description[:100] }}...</p>
             </a>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
+
     </section>
 
 </section>
