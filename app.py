@@ -87,12 +87,20 @@ def terms():
 def results():
     return redirect(url_for('home'))
 
-@app.route("/")
+@app.route('/')
 def home():
-    
     for item in news:
-        item['description'] = descriptions.get(item['image'], "No description available.")
-    return render_template("home.html", news=news)
+        image_name = item["image"]
+        item["description"] = descriptions.get(image_name, "Description not available.")
+    return render_template('home.html', news=news)
+
+@app.route('/news/<int:news_id>')
+def news_detail(news_id):
+    selected_news = next((item for item in news if item["id"] == news_id), None)
+    if selected_news:
+        selected_news["description"] = descriptions.get(selected_news["image"], "Description not available.")
+        return render_template('news_detail.html', news=selected_news)
+    return "News not found", 404
 
 
 if __name__ == '__main__':
