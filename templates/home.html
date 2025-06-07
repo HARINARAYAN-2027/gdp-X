@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <meta name="description" content="Predict India's GDP using smart models and explore detailed economic insights.">
+  <script>
+      function toggleMenu() {
+          const navLinks = document.getElementById("nav-links");
+          navLinks.classList.toggle("show");
+        }
+  </script>
 <style>
     * {
       box-sizing: border-box;
@@ -68,34 +74,118 @@
     }
 
     #nav-links li a:hover {
-      background-color: #2a3e52;
+      background-color: #2e3e4e;
     }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
-
+    @media screen and (max-width: 768px) {
       #nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
         background-color: #1c2b36;
-        margin-top: 10px;
+        padding: 10px;
       }
 
       #nav-links.show {
         display: flex;
       }
 
+      .hamburger {
+        display: block;
+      }
+
       #nav-links li {
-        text-align: center;
         width: 100%;
-        border-bottom: 1px solid #2a3e52;
+      }
+
+      #nav-links li a {
+        display: block;
+        width: 100%;
       }
     }
-  </style>
 
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: url('https://img.freepik.com/free-vector/graph-chart-with-arrow-business-data-growth_1017-39063.jpg') no-repeat center center;
+      background-size: cover;
+      height: 300px;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero-text {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 30px;
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+    }
+
+    .predictor-section {
+      max-width: 500px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .predictor-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .predictor-section input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .predictor-section button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      color: white;
+      background-color: #28a745;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .predictor-section button:hover {
+      background-color: #218838;
+    }
+
+    .info-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .info-section h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #243b55;
+    }
+
+    .info-section p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+  </style>
     
 </head>
 <body>
@@ -116,12 +206,7 @@
       </ul>
     </div>
   </nav
-<script>
-    function toggleMenu() {
-      const navLinks = document.getElementById("nav-links");
-      navLinks.classList.toggle("show");
-    }
-  </script>
+
     <main>
   <section class="form-section">
     <h2>Predict the GDP of a Future Year</h2>
