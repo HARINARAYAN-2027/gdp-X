@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <meta name="description" content="Predict India's GDP using smart models and explore detailed economic insights.">
-
-    <style>
-    
+ <style>
     * {
         box-sizing: border-box;
         transition: all 0.3s ease-in-out;
@@ -41,160 +39,86 @@
         display: flex;
         justify-content: center;
         background-color: #1c2b36;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     nav ul li {
-        margin: 0 15px;
+        margin: 0 20px;
     }
 
     nav ul li a {
-        color: #ffffff;
+        color: white;
         text-decoration: none;
-        padding: 18px 20px;
+        padding: 15px 10px;
+        display: inline-block;
         font-weight: 500;
-        display: block;
-        position: relative;
-    }
-
-    nav ul li a::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 10px;
-        height: 3px;
-        width: 0;
-        background-color: #00ffff;
-        transition: width 0.3s;
-    }
-
-    nav ul li a:hover::after {
-        width: 100%;
     }
 
     nav ul li a:hover {
-        color: #00ffff;
+        background-color: #2a3e52;
+        border-radius: 5px;
     }
 
-    main {
-        padding: 50px 20px;
-        max-width: 1100px;
-        margin: auto;
+    .news-section {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 20px;
+        background-color: #fff;
     }
 
-    .form-section, .gdp-info {
-        background-color: #ffffff;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
-        animation: fadeIn 0.6s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .form-section h2 {
-        margin-bottom: 25px;
-        color: #003366;
-        font-size: 24px;
-        font-weight: 600;
-    }
-
-    label {
-        margin-top: 15px;
-        font-weight: 500;
-    }
-
-    input[type="number"] {
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        margin-top: 10px;
-    }
-
-    button {
-        padding: 14px;
-        font-size: 16px;
-        margin-top: 20px;
-        background: linear-gradient(45deg, #28a745, #218838);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
-
-    button:hover {
-        background: linear-gradient(45deg, #1e7e34, #155d27);
-        transform: scale(1.05);
-    }
-
-    .gdp-info h3 {
-        color: #005792;
-        font-size: 22px;
-    }
-
-    .gdp-info p {
-        line-height: 1.8;
-        color: #444;
-        font-size: 16px;
-    }
-
-    footer {
-        background-color: #0d1a26;
-        color: white;
-        text-align: center;
-        padding: 30px 15px;
-        margin-top: 40px;
-    }
-
-    .social-media {
-        margin-top: 20px;
-    }
-
-    .social-media a {
-        margin: 0 10px;
+    .news-card {
         display: inline-block;
-        color: white;
-        font-size: 20px;
-        transition: transform 0.3s;
+        background: #f9f9f9;
+        width: 280px;
+        margin-right: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        vertical-align: top;
+        transition: transform 0.3s ease;
+        text-align: left;
     }
 
-    .social-media a:hover {
-        transform: scale(1.2);
-        color: #00ffff;
+    .news-card:hover {
+        transform: translateY(-5px);
     }
 
-    footer .privacy-links {
-        margin-top: 10px;
+    .news-card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
     }
 
-    footer .privacy-links a {
-        color: #ccc;
-        text-decoration: underline;
-        margin: 0 8px;
+    .news-content {
+        padding: 15px;
+    }
+
+    .news-content h3 {
+        font-size: 16px;
+        margin: 0 0 10px;
+    }
+
+    .news-content p {
         font-size: 14px;
+        color: #555;
     }
 
-    footer .privacy-links a:hover {
-        color: #00ffff;
-    }
-    .news-gallery .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
-    gap: 25px;
-    }
-    .news-gallery img {
-    width: 10%;
-    height: 25px;
-    object-fit: cover;
+    @media (max-width: 600px) {
+        .news-card {
+            width: 220px;
+        }
+
+        .news-content h3 {
+            font-size: 15px;
+        }
+
+        .news-content p {
+            font-size: 13px;
+        }
     }
 </style>
+
+  
 
     
 </head>
@@ -282,15 +206,23 @@
                 <li><strong>Infrastructure Investment:</strong> Continued investments in infrastructure, including transportation, energy, and urbanization, will boost economic productivity and output.</li>
                 <li><strong>Government Reforms:</strong> Reforms in sectors like taxation (GST), labor laws, and foreign investment policies are expected to improve the ease of doing business and attract more investments.</li>
             </ul>
-       <div class="news-container">
-    {% for item in news %}
-    <div class="news-card">
-        <img src="{{ url_for('static', filename='images/' ~ item.image) }}" alt="News Image">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+      <div class="container">
+        <h2>Welcome to the GDP Prediction Portal</h2>
+        <p>Explore India's economic growth trends and forecasts powered by data science.</p>
     </div>
-    {% endfor %}
-</div>
+
+    <section class="news-section">
+        <div class="news-container">
+            {% for item in news %}
+            <div class="news-card">
+                <a href="{{ url_for('news_detail', news_id=item.id) }}">
+                    <img src="{{ url_for('static', filename='news_images/' ~ item.image) }}" alt="{{ item.title }}">
+                    <div class="description">{{ item.description[:100] }}...</div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
 
 </section>
 
