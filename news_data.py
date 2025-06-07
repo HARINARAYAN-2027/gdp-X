@@ -44,11 +44,11 @@ news = [
     {
         "id": 9,
         "title": "Exports hit all‑time high on pharma and IT surge",
-        "image": "exports-record.png"
+        "image": "india-export-record.png"
     },
     {
         "id": 10,
         "title": "Monsoon forecast brightens outlook for agri‑sector",
-        "image": "monsoon-forecast.png"
+        "image": "green-energy.png"
     }
 ]
