@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terms of Use • GDP Predictor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Read the Terms of Use for GDP Predictor, outlining your rights and responsibilities as a user.">
+  <meta name="keywords" content="GDP Predictor, Terms of Use, Economic Prediction, Legal Policy">
+  <meta name="author" content="Harinarayan Kumar">
+  <link rel="canonical" href="https://gdp-prediction.onrender.com/terms">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/india-flag.png') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #eef2f3 60%, #e0ffe0 100%);
+      color: #243b55;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 32px 10px 18px 10px;
+      text-align: center;
+      font-size: 2.1rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(36,59,85,0.13);
+      letter-spacing: 1px;
+    }
+    .animated-title {
+      background: linear-gradient(90deg, #243b55, #0db830, #243b55, #0db830);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      display: inline-block;
+    }
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+    nav {
+      background-color: #1c2b36;
+      box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 12px 0;
+      margin: 0;
+    }
+    nav ul li {
+      margin: 0 13px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    nav ul li a:hover, nav ul li a.active {
+      background-color: #0db830;
+      color: #fff;
+    }
+    .container {
+      max-width: 900px;
+      margin: 48px auto 32px auto;
+      padding: 38px 32px 28px 32px;
+      background: linear-gradient(120deg, #fff 80%, #e0ffe0 100%);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px 0 rgba(36,59,85,0.13), 0 2px 12px 0 rgba(13,184,48,0.08);
+      transition: box-shadow 0.4s, transform 0.3s;
+      border-left: 6px solid #0db830;
+      border-right: 2px solid #243b55;
+      animation: slideFade 0.7s ease;
+    }
+    .container:hover {
+      box-shadow: 0 16px 48px 0 rgba(36,59,85,0.18), 0 4px 24px 0 rgba(13,184,48,0.12);
+      transform: scale(1.012) translateY(-4px);
+    }
+    @keyframes slideFade {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    h1, h2 {
+      color: #003366;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    h2 {
+      margin-top: 28px;
+      font-size: 1.25rem;
+    }
+    p {
+      font-size: 1.09rem;
+      color: #222;
+      margin: 10px 0;
+    }
+    strong {
+      color: #0db830;
+    }
+    .download-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #003366;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .download-link:hover {
+      background-color: #0db830;
+      color: #fff;
+    }
+    button.back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      background: #003366;
+      color: white;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 50px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    button.back-to-top:hover {
+      background-color: #0db830;
+    }
+    footer {
+      background: linear-gradient(135deg, #0d1a26, #1e2f45);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+      font-size: 15px;
+      box-shadow: 0 -2px 10px rgba(36,59,85,0.08);
+      animation: fadeIn 2s;
+    }
+    .privacy-links a {
+      color: #fff;
+      text-decoration: underline;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .privacy-links a:hover {
+      color: #0db830;
+    }
+    .social-media {
+      margin-top: 18px;
+    }
+    .social-media a {
+      margin: 0 10px;
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .social-media a:hover {
+      transform: scale(1.2) rotate(-7deg);
+    }
+    .social-media img {
+      width: 26px;
+      filter: grayscale(0.2) drop-shadow(0 0 2px #0db830);
+      transition: filter 0.3s, transform 0.3s;
+    }
+    .social-media img:hover {
+      filter: grayscale(0) drop-shadow(0 0 6px #0db830);
+      transform: scale(1.15) rotate(-8deg);
+    }
+    @media (max-width: 900px) {
+      .container { padding: 18px 2vw; }
+    }
+    @media (max-width: 600px) {
+      header { font-size: 1.2rem; padding: 18px 2vw 12px 2vw; }
+      .container { padding: 10px 2vw; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="animated-title">Terms of Use</span>
+    <div style="font-size:1.1rem;font-weight:400;margin-top:8px;letter-spacing:0.2px;">Know Your Rights & Responsibilities</div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      <li><a href="{{ url_for('results') }}">Results</a></li>
+      <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+      <li><a href="{{ url_for('terms') }}" class="active">Terms</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Terms of Use</h1>
+    <p>Welcome to GDP Predictor. By accessing this website, you accept and agree to be bound by the terms and conditions of this agreement. If you do not agree to these terms, please do not use this site.</p>
+
+    <h2>Use License</h2>
+    <p>You may use the website for personal, non-commercial use only. You may not modify or copy the materials, use them for commercial purposes, or attempt to decompile any software contained on this site.</p>
+
+    <h2>Disclaimer</h2>
+    <p>The materials on GDP Predictor are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim all other warranties including, without limitation, implied warranties of merchantability or fitness for a particular purpose.</p>
+
+    <h2>Limitations</h2>
+    <p>In no event shall GDP Predictor be liable for any damages arising out of the use or inability to use the materials on the site.</p>
+
+    <h2>Accuracy of Information</h2>
+    <p>We strive to provide accurate and up-to-date information, but we do not guarantee the completeness, accuracy, or reliability of any information on the site. Any reliance you place on such information is strictly at your own risk.</p>
+
+    <h2>Third-Party Links</h2>
+    <p>This website may contain links to third-party websites or services that are not owned or controlled by us. We have no control over the content or practices of these sites and disclaim any responsibility for them.</p>
+
+    <h2>Changes to Terms</h2>
+    <p>We reserve the right to update or change these Terms of Use at any time without prior notice. Continued use of the website after any changes constitutes acceptance of those changes.</p>
+
+    <h2>Governing Law</h2>
+    <p>Any claim relating to the site shall be governed by the laws of India without regard to its conflict of law provisions.</p>
+
+    <a href="{{ url_for('static', filename='docs/terms.pdf') }}" target="_blank" class="download-link">Download Terms (PDF)</a>
+  </div>
+
+  <button class="back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑ Top</button>
+
+  <footer>
+    <p>&copy; 2025 GDP Predictor. All Rights Reserved.</p>
+    <div class="privacy-links">
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
+      <a href="{{ url_for('terms') }}">Terms of Service</a>
+    </div>
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+      </a>
+      <a href="https://www.twitter.com" target="_blank">
+        <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+      </a>
+      <a href="https://www.instagram.com/harinarayan_kumar_official/" target="_blank">
+        <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+      </a>
+      <a href="https://www.linkedin.com/in/harinarayankumarpal/" target="_blank">
+        <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+      </a>
+    </div>
+  </footer>
+</body>
+</html>

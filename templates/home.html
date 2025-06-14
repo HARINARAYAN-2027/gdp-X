@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🇮🇳 GDP Predictor • India's Economic Future</title>
+  <meta name="description" content="Predict India's GDP with AI-powered models. Download real data, explore news, and visualize India's economic growth smartly.">
+  <link rel="icon" href="{{ url_for('static', filename='images/india-flag.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c5ccd2, #dbe9f4);
+      color: #3c1b89;
+    }
+    header {
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: #fff;
+      padding: 25px 20px 10px 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .animated-title {
+      background: linear-gradient(90deg, #243b55, #0db830, #243b55, #0db830);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      display: inline-block;
+      letter-spacing: 1px;
+    }
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+    .flag {
+      font-size: 1.2em;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 2px #fff);
+    }
+    .subtitle {
+      font-size: 1.1em;
+      margin-top: 8px;
+      color: #e0ffe0;
+      letter-spacing: 0.5px;
+      animation: fadeIn 2s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    nav {
+      background-color: #1c2b36;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+    #nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    #nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 12px;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    #nav-links li a:hover {
+      background-color: #0db830;
+      color: #fff;
+    }
+    .form-section {
+      text-align: center;
+      padding: 40px 20px 20px;
+      animation: fadeIn 1.5s;
+    }
+    .form-section input[type="number"] {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 200px;
+      margin-right: 10px;
+      transition: border 0.3s;
+    }
+    .form-section input[type="number"]:focus {
+      border: 1.5px solid #0db830;
+      outline: none;
+    }
+    .form-section button {
+      padding: 12px 20px;
+      font-size: 16px;
+      background: linear-gradient(90deg, #243b55, #0db830);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+    }
+    .form-section button:hover {
+      background: linear-gradient(90deg, #0db830, #243b55);
+      transform: scale(1.05);
+    }
+
+    /* --- GDP Info Section: Modern & Unique --- */
+    .gdp-info {
+      padding: 32px 36px;
+      max-width: 1000px;
+      margin: 40px auto 0 auto;
+      line-height: 1.85;
+      background: linear-gradient(120deg, #f8fafc 80%, #e0ffe0 100%);
+      border-radius: 22px;
+      box-shadow: 0 6px 32px 0 rgba(36,59,85,0.13), 0 1.5px 8px 0 rgba(13,184,48,0.08);
+      color: #1a2340;
+      border-left: 8px solid #0db830;
+      border-right: 2px solid #243b55;
+      font-size: 1.08em;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s, border 0.4s;
+    }
+    .gdp-info h3 {
+      margin-top: 36px;
+      color: #0db830;
+      letter-spacing: 0.7px;
+      font-size: 1.25em;
+      background: linear-gradient(90deg, #243b55 30%, #0db830 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+    .gdp-info ul {
+      padding-left: 28px;
+      margin-bottom: 18px;
+    }
+    .gdp-info li {
+      margin-bottom: 7px;
+      font-size: 1em;
+      line-height: 1.7;
+      position: relative;
+      padding-left: 8px;
+    }
+    .gdp-info li::before {
+      content: "•";
+      color: #0db830;
+      font-size: 1.2em;
+      position: absolute;
+      left: -15px;
+      top: 0;
+    }
+    .gdp-info strong {
+      color: #243b55;
+      font-weight: 600;
+      background: linear-gradient(90deg, #e0ffe0 60%, #c5ccd2 100%);
+      border-radius: 4px;
+      padding: 1px 4px;
+      transition: background 0.3s;
+    }
+    .gdp-info p {
+      margin-bottom: 14px;
+      font-size: 1.07em;
+      color: #222;
+      text-shadow: 0 1px 0 #fff;
+    }
+    .gdp-info:hover {
+      box-shadow: 0 12px 40px 0 rgba(36,59,85,0.18), 0 2px 12px 0 rgba(13,184,48,0.12);
+      border-left: 8px solid #243b55;
+      border-right: 2px solid #0db830;
+    }
+
+    /* --- News Section --- */
+    .news-section {
+      margin-top: 50px;
+      padding: 20px;
+      text-align: center;
+      overflow-x: auto;
+      animation: fadeIn 2s;
+    }
+    .news-section h2 {
+      color: #243b55;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+      font-size: 1.7em;
+      text-shadow: 0 2px 8px #e0ffe0;
+    }
+    .news-container {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      margin-top: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+      cursor: grab;
+      user-select: none;
+    }
+    .news-card {
+      min-width: 260px;
+      max-width: 260px;
+      background-color: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.13);
+      text-align: left;
+      transition: transform 0.3s, box-shadow 0.3s;
+      flex: 0 0 auto;
+      position: relative;
+    }
+    .news-card:hover {
+      transform: translateY(-8px) scale(1.04) rotate(-1deg);
+      box-shadow: 0 8px 24px rgba(36,59,85,0.18);
+      z-index: 2;
+    }
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      transition: filter 0.4s, transform 0.4s;
+      border-bottom: 2px solid #0db830;
+    }
+    .news-card:hover img {
+      filter: brightness(0.92) blur(0.5px);
+      transform: scale(1.05) rotate(-1deg);
+    }
+    .news-card h3 {
+      padding: 15px;
+      font-size: 18px;
+      color: #243b55;
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+    .news-card:hover h3 {
+      color: #0db830;
+    }
+    .news-container::-webkit-scrollbar { display: none; }
+    .news-container { -ms-overflow-style: none; scrollbar-width: none; }
+    footer {
+      background-color: #133246;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: 60px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 10px rgba(36,59,85,0.08);
+      animation: fadeIn 2s;
+    }
+    .social-media img {
+      width: 25px;
+      margin: 0 8px;
+      filter: grayscale(0.2) drop-shadow(0 0 2px #0db830);
+      transition: filter 0.3s, transform 0.3s;
+    }
+    .social-media img:hover {
+      filter: grayscale(0) drop-shadow(0 0 6px #0db830);
+      transform: scale(1.15) rotate(-8deg);
+    }
+    .privacy-links a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .privacy-links a:hover {
+      color: #0db830;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1c2b36;
+      }
+      #nav-links.show { display: flex; }
+      .nav-container { flex-direction: column; align-items: flex-start; }
+      .form-section input, .form-section button { margin-top: 10px; width: 100%; }
+      .news-container { gap: 12px; }
+      .news-card { min-width: 80vw; max-width: 90vw; }
+      .gdp-info { padding: 18px 6vw; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="animated-title">GDP Predictor <span class="flag">🇮🇳</span></h1>
+    <p class="subtitle">Explore India's Economic Growth Through <span style="color:#0db830;font-weight:600;">Smart Predictions</span></p>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</div>
+      <ul id="nav-links">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('results') }}">Results</a></li>
+        <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+        <li><a href="{{ url_for('terms') }}">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="form-section">
+      <h2 style="animation: fadeIn 1.5s;">Predict the GDP of a Future Year</h2>
+      <form action="{{ url_for('predict') }}" method="POST">
+        <input type="number" id="year" name="year" placeholder="e.g., 2025" required min="2000" max="2200">
+        <button type="submit">Predict</button>
+      </form>
+      <!-- GDP CSV Download Button -->
+      <a href="{{ url_for('download_gdp_csv') }}">
+        <button type="button" style="margin-top:20px; background:#243b55; color:white; padding:10px 20px; border:none; border-radius:6px; font-size:16px; cursor:pointer; transition:background 0.3s,transform 0.2s;">
+          Download GDP Data (CSV)
+        </button>
+      </a>
+    </section>
+
+    {% if prediction %}
+      <section class="form-section">
+        <h3>Predicted GDP for {{ year }}: {{ prediction }} Trillion USD</h3>
+      </section>
+    {% elif error %}
+      <section class="form-section">
+        <p style="color: red; font-weight: 600;">{{ error }}</p>
+      </section>
+    {% endif %}
+
+    <section class="gdp-info">
+      <h3>What is GDP?</h3>
+      <p>Gross Domestic Product (GDP) is the total monetary value of all finished goods and services produced within a country's borders in a specific time period. It is a comprehensive measure of a nation's overall economic activity. GDP is widely used to compare the economic health of different countries and to track the growth or contraction of a national economy.</p>
+
+      <h3>India's GDP: A Journey of Growth</h3>
+      <p>India, one of the fastest-growing economies in the world, has witnessed tremendous transformation over the decades. From an agriculture-dominated economy to a booming services and tech industry, India’s GDP reflects its resilience and innovation. As of 2025, India stands as the fifth-largest economy globally in nominal GDP terms.</p>
+
+      <h3>Key Drivers of India’s GDP</h3>
+      <ul>
+          <li><strong>Agriculture:</strong> Agriculture continues to be a major contributor to India's GDP, despite the country's rapid industrialization. The sector, which includes farming, fishing, and forestry, employs a large percentage of the population, particularly in rural areas.</li>
+          <li><strong>Manufacturing:</strong> The manufacturing sector has become one of the largest contributors to India’s GDP, driven by industries such as automobiles, textiles, steel, and chemicals. The 'Make in India' initiative has been instrumental in boosting this sector.</li>
+          <li><strong>Services Sector:</strong> The services sector is the largest contributor to India’s GDP. This sector includes IT services, telecommunications, banking, finance, healthcare, and tourism. India is home to one of the world’s largest IT outsourcing industries.</li>
+          <li><strong>Digital India:</strong> India’s Digital Revolution has brought technology into the hands of millions, with initiatives such as the Digital India campaign promoting digital literacy, mobile internet, and e-commerce, thereby expanding the economy.</li>
+      </ul>
+
+      <h3>Historical Trends in India’s GDP Growth</h3>
+      <p>India’s economic growth has been variable, influenced by factors like policy changes, global economic conditions, and domestic challenges. From the early post-independence years, when the economy was primarily agricultural, India transitioned into an industrializing and eventually a service-oriented economy. The economic liberalization of 1991 marked a turning point, ushering in faster growth rates.</p>
+      <p>In the last decade, India has seen significant economic reforms, which have helped sustain growth, even as global growth slowed. Despite challenges such as inflation, global financial crises, and the COVID-19 pandemic, India has shown resilience and continues to grow at a rate higher than many other economies.</p>
+
+      <h3>India’s GDP by Sector</h3>
+      <p>India’s GDP is divided into three main sectors:</p>
+      <ul>
+          <li><strong>Agriculture:</strong> Contributes around 18% to India’s GDP, although its share in employment is much higher, with over 50% of the workforce depending on agriculture.</li>
+          <li><strong>Industry:</strong> The industrial sector, which includes manufacturing and construction, contributes around 29% to GDP. The sector has been expanding with the growth of infrastructure and the rise of the manufacturing sector under the 'Make in India' initiative.</li>
+          <li><strong>Services:</strong> The services sector is the dominant sector, contributing over 53% to India’s GDP. It is driven by IT services, telecommunications, finance, insurance, healthcare, and business services, among others.</li>
+      </ul>
+
+      <h3>Regional Contributions to GDP</h3>
+      <p>India is a vast and diverse country, and different regions contribute in unique ways to its economic output. For example, the southern states of India, including Karnataka, Tamil Nadu, and Andhra Pradesh, are known for their tech hubs in cities like Bengaluru and Hyderabad, which significantly contribute to the services sector of GDP. In contrast, states like Maharashtra and Gujarat are industrial powerhouses, contributing heavily through manufacturing and trade.</p>
+      <p>Regional disparities exist, with some states performing better economically, owing to factors such as industrial development, infrastructure, and human capital development. The central government has introduced various initiatives to promote balanced regional development.</p>
+
+      <h3>Challenges Facing India’s GDP Growth</h3>
+      <p>While India’s GDP growth remains strong, there are several challenges that continue to affect the economy’s potential:</p>
+      <ul>
+          <li><strong>Poverty:</strong> Despite the overall economic growth, a significant portion of India’s population still lives in poverty, primarily in rural areas.</li>
+          <li><strong>Unemployment:</strong> High levels of unemployment, particularly among the youth, remain a significant issue. There is also a growing concern regarding underemployment.</li>
+          <li><strong>Income Inequality:</strong> Although India’s economy has grown, income inequality has worsened, with a rising gap between the rich and poor.</li>
+          <li><strong>Infrastructure Deficiencies:</strong> Insufficient infrastructure, particularly in rural areas, can limit productivity and hinder overall economic growth.</li>
+      </ul>
+
+      <h3>Future Outlook for India's GDP</h3>
+      <p>India is projected to continue growing rapidly over the next several decades, driven by demographic advantages and increased global integration. The country’s youth population, which is expected to remain one of the largest in the world, will contribute significantly to the workforce. Additionally, India’s increasing global connectivity through trade agreements, digital advancements, and investment in infrastructure will further bolster growth.</p>
+      <p>By 2030, India is expected to become the third-largest economy in the world in nominal terms, behind only the United States and China. This growth will be supported by:</p>
+      <ul>
+          <li><strong>Urbanization:</strong> As India’s urban population increases, the shift from rural to urban living will fuel demand for goods and services, further stimulating growth.</li>
+          <li><strong>Education and Skill Development:</strong> India is investing heavily in education, particularly in science, technology, engineering, and mathematics (STEM) fields, which will ensure a skilled workforce for the future.</li>
+          <li><strong>Infrastructure Investment:</strong> Continued investments in infrastructure, including transportation, energy, and urbanization, will boost economic productivity and output.</li>
+          <li><strong>Government Reforms:</strong> Reforms in sectors like taxation (GST), labor laws, and foreign investment policies are expected to improve the ease of doing business and attract more investments.</li>
+      </ul>
+    </section>
+
+    <section class="news-section">
+      <h2>Latest News & Insights</h2>
+      <div class="news-container" id="news-scroll">
+        {% for item in news %}
+        <div class="news-card">
+          <a href="{{ url_for('news_detail', news_id=item.id) }}">
+            <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.title }}">
+            <h3>{{ item.title }}</h3>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div style="margin-top:10px;">
+        <small style="color:#888;">Click on news area to pause/resume auto-scroll</small>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 GDP Predictor - India. All rights reserved.</p>
+    <div class="social-media">
+      <a href="#"><img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter"></a>
+      <a href="#"><img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook"></a>
+      <a href="#"><img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram"></a>
+      <a href="#"><img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn"></a>
+    </div>
+    <div class="privacy-links">
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+      <a href="{{ url_for('terms') }}">Terms & Conditions</a>
+    </div>
+  </footer>
+
+  <!-- News auto-scroll: now only stops on click, not on hover -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById('news-scroll');
+    let scrollAmount = 0;
+    let paused = false;
+    let autoScroll = setInterval(scrollNews, 20);
+
+    function scrollNews() {
+      if (!paused && container) {
+        scrollAmount += 1.2;
+        if (scrollAmount > container.scrollWidth - container.clientWidth) {
+          scrollAmount = 0;
+        }
+        container.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+
+    container.addEventListener('click', function() {
+      paused = !paused;
+    });
+  });
+  </script>
+</body>
+</html>

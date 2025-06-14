@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy • GDP Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/india-flag.png') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #eef2f3 60%, #e0ffe0 100%);
+            color: #243b55;
+            margin: 0;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
+            padding: 32px 10px 18px 10px;
+            text-align: center;
+            font-size: 2.1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(36,59,85,0.13);
+            letter-spacing: 1px;
+        }
+        .animated-title {
+            background: linear-gradient(90deg, #243b55, #0db830, #243b55, #0db830);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            display: inline-block;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        nav {
+            background-color: #1c2b36;
+            box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 12px 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 13px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #0db830;
+            color: #fff;
+        }
+        .container {
+            max-width: 850px;
+            margin: 48px auto 32px auto;
+            padding: 38px 32px 28px 32px;
+            background: linear-gradient(120deg, #fff 80%, #e0ffe0 100%);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(36,59,85,0.13), 0 2px 12px 0 rgba(13,184,48,0.08);
+            transition: box-shadow 0.4s, transform 0.3s;
+            border-left: 6px solid #0db830;
+            border-right: 2px solid #243b55;
+            animation: slideFade 0.7s ease;
+        }
+        .container:hover {
+            box-shadow: 0 16px 48px 0 rgba(36,59,85,0.18), 0 4px 24px 0 rgba(13,184,48,0.12);
+            transform: scale(1.012) translateY(-4px);
+        }
+        @keyframes slideFade {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        h1, h2 {
+            color: #003366;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        h2 {
+            margin-top: 28px;
+            font-size: 1.25rem;
+        }
+        p {
+            font-size: 1.09rem;
+            color: #222;
+            margin: 10px 0;
+        }
+        strong {
+            color: #0db830;
+        }
+        footer {
+            background: linear-gradient(135deg, #0d1a26, #1e2f45);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 60px;
+            font-size: 15px;
+            box-shadow: 0 -2px 10px rgba(36,59,85,0.08);
+            animation: fadeIn 2s;
+        }
+        .privacy-links a {
+            color: #fff;
+            text-decoration: underline;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        .privacy-links a:hover {
+            color: #0db830;
+        }
+        .social-media {
+            margin-top: 18px;
+        }
+        .social-media a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .social-media a:hover {
+            transform: scale(1.2) rotate(-7deg);
+        }
+        .social-media img {
+            width: 26px;
+            filter: grayscale(0.2) drop-shadow(0 0 2px #0db830);
+            transition: filter 0.3s, transform 0.3s;
+        }
+        .social-media img:hover {
+            filter: grayscale(0) drop-shadow(0 0 6px #0db830);
+            transform: scale(1.15) rotate(-8deg);
+        }
+        @media (max-width: 900px) {
+            .container { padding: 18px 2vw; }
+        }
+        @media (max-width: 600px) {
+            header { font-size: 1.2rem; padding: 18px 2vw 12px 2vw; }
+            .container { padding: 10px 2vw; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="animated-title">Privacy Policy</span>
+        <div style="font-size:1.1rem;font-weight:400;margin-top:8px;letter-spacing:0.2px;">Your Data, Your Trust, Our Promise</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('results') }}">Results</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>Your privacy is important to us at <strong>GDP Predictor</strong>. This policy outlines the types of information we collect and how we use, store, and protect that data.</p>
+      <h2>1. Information Collection</h2>
+      <p>We may collect basic information you provide directly through forms on the site, such as your name and email. We do not collect sensitive personal data unless explicitly required for functionality.</p>
+      <h2>2. Usage Data</h2>
+      <p>Like most websites, we automatically collect certain technical data such as IP address, browser type, device, date/time of visit, and referring pages. This helps us improve site performance and understand traffic patterns.</p>
+      <h2>3. Cookies & Tracking</h2>
+      <p>We use limited cookies to maintain session integrity and optimize user experience. Third-party services like Google AdSense may also use cookies to display relevant advertisements based on browsing behavior.</p>
+      <h2>4. Third-Party Services</h2>
+      <p>Our site may use services like Google Analytics and AdSense. These third-party platforms have their own privacy policies which we recommend reviewing. We do not share your personal data with them intentionally.</p>
+      <h2>5. Data Security</h2>
+      <p>We implement industry-standard security measures to protect your data. However, no method of transmission over the internet is 100% secure.</p>
+      <h2>6. User Rights</h2>
+      <p>You may request access to or deletion of any data you've voluntarily submitted. Contact us via the website form to raise any concerns or requests.</p>
+      <h2>7. Consent</h2>
+      <p>By using this website, you consent to the terms of this privacy policy.</p>
+      <h2>8. Updates</h2>
+      <p>We may revise this Privacy Policy from time to time. Any changes will be reflected on this page with the updated date.</p>
+      <p style="margin-top: 30px;"><strong>Last Updated:</strong> June 6, 2025</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 GDP Predictor. All Rights Reserved.</p>
+        <div class="privacy-links">
+            <a href="{{ url_for('privacy') }}">Privacy Policy</a> | 
+            <a href="{{ url_for('terms') }}">Terms of Service</a>
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/facebook-icon.png') }}" alt="Facebook">
+            </a>
+            <a href="https://www.twitter.com" target="_blank">
+                <img src="{{ url_for('static', filename='images/twitter-icon.png') }}" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/harinarayan_kumar_official/" target="_blank">
+                <img src="{{ url_for('static', filename='images/instagram-icon.png') }}" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/in/harinarayankumarpal/" target="_blank">
+                <img src="{{ url_for('static', filename='images/linkedin-icon.png') }}" alt="LinkedIn">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

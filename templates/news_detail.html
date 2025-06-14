@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ news.title }} - GDP Predictor News Detail">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='images/india-flag.png') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0e7ef 60%, #e0ffe0 100%);
+            color: #243b55;
+            margin: 0;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #fff;
+            padding: 28px 10px 18px 10px;
+            text-align: center;
+            font-size: 2.1rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(36,59,85,0.13);
+            letter-spacing: 1px;
+        }
+        .animated-title {
+            background: linear-gradient(90deg, #243b55, #0db830, #243b55, #0db830);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            display: inline-block;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+        nav {
+            background-color: #1c2b36;
+            box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 12px 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 13px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #0db830;
+            color: #fff;
+        }
+        .content {
+            max-width: 800px;
+            margin: 48px auto 32px auto;
+            padding: 32px 32px 24px 32px;
+            background: linear-gradient(120deg, #fff 80%, #e0ffe0 100%);
+            border-radius: 22px;
+            box-shadow: 0 8px 32px 0 rgba(36,59,85,0.13), 0 2px 12px 0 rgba(13,184,48,0.08);
+            text-align: center;
+            transition: box-shadow 0.4s, transform 0.3s;
+            border-left: 6px solid #0db830;
+            border-right: 2px solid #243b55;
+        }
+        .content:hover {
+            box-shadow: 0 16px 48px 0 rgba(36,59,85,0.18), 0 4px 24px 0 rgba(13,184,48,0.12);
+            transform: scale(1.012) translateY(-4px);
+        }
+        .content img {
+            width: 75%;
+            max-height: 340px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 28px;
+            box-shadow: 0 2px 12px rgba(36,59,85,0.10);
+            transition: transform 0.4s, box-shadow 0.3s;
+        }
+        .content img:hover {
+            transform: scale(1.04) rotate(-1deg);
+            box-shadow: 0 8px 32px rgba(36,59,85,0.15);
+        }
+        .content p {
+            font-size: 1.18rem;
+            line-height: 1.7;
+            text-align: justify;
+            color: #222;
+            margin-bottom: 18px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #fff;
+            background: linear-gradient(90deg, #243b55, #0db830);
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.08rem;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        .back-link:hover {
+            background: linear-gradient(90deg, #0db830, #243b55);
+            transform: scale(1.06) translateY(-2px);
+            box-shadow: 0 8px 24px rgba(36,59,85,0.18);
+            text-decoration: underline;
+        }
+        @media (max-width: 900px) {
+            .content { padding: 18px 2vw; }
+            .content img { width: 95%; max-height: 220px; }
+        }
+        @media (max-width: 600px) {
+            header { font-size: 1.2rem; padding: 18px 2vw 12px 2vw; }
+            .content { padding: 10px 2vw; }
+            .content img { width: 99%; max-height: 160px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="animated-title">{{ news.title }}</span>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('contact') }}">Contact</a></li>
+            <li><a href="{{ url_for('results') }}">Results</a></li>
+            <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+            <li><a href="{{ url_for('terms') }}">Terms</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <img src="{{ url_for('static', filename='images/' + news.image) }}" alt="{{ news.title }}">
+        <p>{{ news.description }}</p>
+        <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>

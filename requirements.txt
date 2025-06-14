@@ -1,0 +1,55 @@
+# === Web Framework ===
+Flask==2.2.5
+gunicorn==21.2.0                  # Production WSGI server for Render
+
+# === Environment Variables Support ===
+python-dotenv==1.0.1              # .env loading
+
+# === Flask Extensions ===
+Flask-Mail==0.10.0                # Email handling
+blinker==1.9.0                    # For flashing messages (used internally by Flask)
+
+# === Template Rendering ===
+Jinja2==3.1.6
+MarkupSafe==3.0.2
+itsdangerous==2.2.0
+Werkzeug==2.2.3
+click==8.1.8
+colorama==0.4.6
+
+# === Math / ML / Data Analysis ===
+numpy==2.2.3
+pandas==2.2.3
+scikit-learn==1.6.1
+scipy==1.15.2
+statsmodels==0.14.4
+joblib==1.4.2
+threadpoolctl==3.6.0
+patsy==1.0.1
+
+# === Plotting ===
+matplotlib==3.10.1
+seaborn==0.13.2
+cycler==0.12.1
+fonttools==4.56.0
+contourpy==1.3.1
+kiwisolver==1.4.8
+pyparsing==3.2.3
+pillow==11.1.0
+
+# === Excel Support ===
+openpyxl==3.1.5
+et_xmlfile==2.0.0
+
+# === Networking ===
+requests==2.32.3
+urllib3==2.3.0
+charset-normalizer==3.4.1
+certifi==2025.1.31
+idna==3.10
+
+# === Date & Time ===
+python-dateutil==2.9.0.post0
+six==1.17.0
+pytz==2025.1
+tzdata==2025.1

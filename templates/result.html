@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🇮🇳 GDP Prediction Result • India's Economic Future</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="See India's GDP prediction results with interactive charts and insights.">
+  
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <link rel="icon" href="{{ url_for('static', filename='images/india-flag.png') }}">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d3e3f0 60%, #e0ffe0 100%);
+      min-height: 100vh;
+      color: #243b55;
+    }
+    .modern-card {
+      background: linear-gradient(120deg, #fff 80%, #e0ffe0 100%);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(36,59,85,0.13), 0 2px 12px 0 rgba(13,184,48,0.08);
+      transition: box-shadow 0.4s, transform 0.3s;
+      border-left: 6px solid #0db830;
+      border-right: 2px solid #243b55;
+    }
+    .modern-card:hover {
+      box-shadow: 0 16px 48px 0 rgba(36,59,85,0.18), 0 4px 24px 0 rgba(13,184,48,0.12);
+      transform: scale(1.015) translateY(-4px);
+    }
+    .animated-title {
+      background: linear-gradient(90deg, #243b55, #0db830, #243b55, #0db830);
+      background-size: 200% auto;
+      color: #fff;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s linear infinite;
+      display: inline-block;
+      letter-spacing: 1px;
+      font-size: 2.2rem;
+      font-weight: 700;
+    }
+    @keyframes shine {
+      to { background-position: 200% center; }
+    }
+    .flag {
+      font-size: 1.2em;
+      vertical-align: middle;
+      filter: drop-shadow(0 0 2px #fff);
+    }
+    .result-desc {
+      font-size: 1.15rem;
+      color: #3c1b89;
+      margin-bottom: 1.5rem;
+      animation: fadeIn 1.5s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .plot-area {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(36,59,85,0.10);
+      background: #f8fafc;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.3s;
+    }
+    .plot-area:hover {
+      box-shadow: 0 8px 32px rgba(36,59,85,0.15);
+    }
+    .modern-btn {
+      background: linear-gradient(90deg, #243b55, #0db830);
+      color: #fff;
+      font-weight: 600;
+      padding: 0.75rem 2.5rem;
+      border-radius: 0.75rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(36,59,85,0.08);
+      border: none;
+      outline: none;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .modern-btn:hover {
+      background: linear-gradient(90deg, #0db830, #243b55);
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 8px 24px rgba(36,59,85,0.18);
+    }
+    nav {
+      background-color: #1c2b36;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      flex-wrap: wrap;
+    }
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      color: white;
+      cursor: pointer;
+    }
+    #nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+    #nav-links li a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 12px;
+      font-weight: 500;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+    }
+    #nav-links li a:hover {
+      background-color: #0db830;
+      color: #fff;
+    }
+    footer {
+      background-color: #133246;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      margin-top: auto;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 10px rgba(36,59,85,0.08);
+      animation: fadeIn 2s;
+    }
+    .privacy-links a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .privacy-links a:hover {
+      color: #0db830;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      #nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #1c2b36;
+      }
+      #nav-links.show {
+        display: flex;
+      }
+      .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .modern-card { padding: 1.2rem 0.5rem; }
+      .plot-area { border-radius: 0.7rem; }
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show");
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Navigation Bar -->
+  <nav>
+    <div class="nav-container">
+      <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle Menu">☰</div>
+      <ul id="nav-links">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+        <li><a href="{{ url_for('results') }}">Results</a></li>
+        <li><a href="{{ url_for('privacy') }}">Privacy</a></li>
+        <li><a href="{{ url_for('terms') }}">Terms</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="flex-grow flex flex-col items-center justify-center px-4 py-12">
+    <div class="max-w-3xl w-full modern-card p-8 text-center">
+      <h1 class="animated-title mb-2">GDP Prediction Result <span class="flag">🇮🇳</span></h1>
+      <p class="result-desc">{{ prediction_text }}</p>
+      <!-- Plotly GDP Chart -->
+      <div id="gdpChart" class="plot-area w-full h-[400px]"></div>
+      <a href="{{ url_for('home') }}">
+        <button class="modern-btn mt-4">
+          ← Back to Home
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 GDP Predictor - India. All rights reserved.</p>
+    <div class="privacy-links">
+      <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+      <a href="{{ url_for('terms') }}">Terms & Conditions</a>
+    </div>
+  </footer>
+
+  <script>
+    const plotData = JSON.parse('{{ plot_data | tojson | safe }}');
+    const plotLayout = JSON.parse('{{ plot_layout | tojson | safe }}');
+    Plotly.newPlot('gdpChart', plotData, plotLayout, { responsive: true });
+  </script>
+</body>
+</html>
