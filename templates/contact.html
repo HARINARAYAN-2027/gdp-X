@@ -190,7 +190,7 @@
 </head>
 <body>
 
-    <!-- AdSense Banner -->
+    
     <ins class="adsbygoogle"
         style="display:block"
         data-ad-client="ca-pub-5467190410358033"
@@ -221,7 +221,7 @@
         <p><strong>Phone:</strong> 7759895298</p>
         <p><strong>Email:</strong> harinarayankumar548@gmail.com</p>
 
-        <!-- Flash messages -->
+        
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -230,7 +230,7 @@
             {% endif %}
         {% endwith %}
 
-        <!-- Contact Form -->
+        
         <form action="/contact" method="post">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your Name" value="{{ request.form.get('name', '') }}" required>
@@ -263,7 +263,7 @@
         </div>
     </footer>
 
-    <!-- Optional: Auto-hide message after 5 seconds -->
+    
     <script>
         setTimeout(() => {
             const box = document.querySelector('.message-box');
