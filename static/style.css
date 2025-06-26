@@ -1,4 +1,4 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,24 +7,24 @@
 }
 
 body {
-    background-color: #f4f4f9; /* Soft gray background */
-    color: #333; /* Dark gray text for readability */
+    background-color: #f4f4f9; 
+    color: #333; 
     line-height: 1.6;
 }
 
 a {
     text-decoration: none;
-    color: #007bff; /* Bright blue links */
+    color: #007bff; 
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #0056b3; /* Darker blue on hover */
+    color: #0056b3; 
 }
 
-/* Header Styling */
+/
 header {
-    background-color: #333; /* Dark header background */
+    background-color: #333; 
     color: white;
     padding: 15px 20px;
     display: flex;
@@ -35,7 +35,7 @@ header {
 header .logo h1 {
     font-size: 24px;
     margin: 0;
-    color: #28a745; /* Green logo color */
+    color: #28a745; 
 }
 
 header nav ul {
@@ -55,12 +55,12 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #ffc107; /* Golden hover effect */
+    color: #ffc107; 
 }
 
-/* Hero Section */
+
 .hero {
-    background: linear-gradient(to right, #333, #28a745); /* Gradient background */
+    background: linear-gradient(to right, #333, #28a745); 
     color: white;
     text-align: center;
     padding: 80px 20px;
@@ -78,7 +78,7 @@ header nav ul li a:hover {
 .hero .cta-button {
     margin-top: 20px;
     padding: 10px 30px;
-    background-color: #ffc107; /* Golden button */
+    background-color: #ffc107; 
     color: #333;
     border: none;
     border-radius: 5px;
@@ -93,12 +93,12 @@ header nav ul li a:hover {
     color: white;
 }
 
-/* Main Content */
+
 main {
     padding: 20px;
 }
 
-/* Container for Pages like About, Results, Terms, Privacy */
+
 .container {
     max-width: 900px;
     margin: 50px auto;
@@ -174,11 +174,11 @@ main {
 .form-section input:focus, 
 .form-section textarea:focus {
     outline: none;
-    border-color: #28a745; /* Green focus effect */
+    border-color: #28a745; 
 }
 
 .form-section button {
-    background-color: #28a745; /* Green button */
+    background-color: #28a745; 
     color: white;
     border: none;
     cursor: pointer;
@@ -187,10 +187,10 @@ main {
 }
 
 .form-section button:hover {
-    background-color: #218838; /* Darker green on hover */
+    background-color: #218838; 
 }
 
-/* Back Button */
+
 .back-button {
     display: inline-block;
     margin-top: 30px;
@@ -207,7 +207,7 @@ main {
     background-color: #0056b3;
 }
 
-/* Footer Styling */
+
 footer {
     background-color: #333;
     color: white;
@@ -222,16 +222,16 @@ footer .social-media {
 }
 
 footer .social-media img {
-    width: 16px; /* Smaller icon size */
+    width: 16px; 
     margin: 0 5px;
     transition: transform 0.3s ease;
 }
 
 footer .social-media img:hover {
-    transform: scale(1.2); /* Slight zoom on hover */
+    transform: scale(1.2); 
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
