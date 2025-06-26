@@ -1,4 +1,4 @@
-# news_descriptions.py
+
 
 descriptions = {
     "gdp-growth.png": (
