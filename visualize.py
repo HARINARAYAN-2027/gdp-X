@@ -5,7 +5,7 @@ import pickle
 import plotly.graph_objs as go
 import matplotlib.pyplot as plt
 
-# Estimate future features using linear regression
+
 def estimate_future_features(df, year, feature_names):
     estimated_row = {}
     for feature in feature_names:
@@ -20,7 +20,7 @@ def estimate_future_features(df, year, feature_names):
         estimated_row[feature] = estimated_value
     return pd.DataFrame([estimated_row])
 
-# For API (Plotly interactive JSON plot)
+
 def generate_gdp_json_plot(year):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(base_dir, 'backend', 'model', 'gdp.csv')
@@ -74,7 +74,7 @@ def generate_gdp_json_plot(year):
     fig = go.Figure(data=[trace_actual, trace_pred], layout=layout)
     return fig.to_dict(), predicted_gdp
 
-# For Flask HTML display (static image)
+
 def generate_gdp_plot(year):
     base_dir = os.path.dirname(os.path.abspath(__file__))
     data_path = os.path.join(base_dir, 'backend', 'model', 'gdp.csv')
@@ -100,7 +100,7 @@ def generate_gdp_plot(year):
     predicted_log_gdp = model.predict(input_df)[0]
     predicted_gdp = np.exp(predicted_log_gdp)
 
-    # Matplotlib plot
+    
     plt.figure(figsize=(10, 6))
     plt.plot(df['Year'], df['GDP (US$ Trillion)'], marker='o', color='green', label='Actual GDP')
     plt.scatter([year], [predicted_gdp], color='red', s=100, label=f'Predicted {year}')
@@ -117,7 +117,7 @@ def generate_gdp_plot(year):
 
     return predicted_gdp, output_path
 
-# Optional: For running directly
+
 if __name__ == '__main__':
     try:
         user_input = input("📅 Enter the year for GDP prediction (e.g., 2030): ")
