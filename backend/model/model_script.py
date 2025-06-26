@@ -7,7 +7,6 @@ import pickle
 import os
 import traceback
 
-# === Paths ===
 file_path = 'C:/Users/harin/Downloads/gdp-X-main/gdp-X-main/backend/model/gdp.csv'
 model_dir = 'C:/Users/harin/Downloads/gdp-X-main/gdp-X-main/backend/model'
 model_path = os.path.join(model_dir, 'gdp_model.pkl')
@@ -47,7 +46,6 @@ try:
     print(f"✅ Cross-Validation Mean R²: {cv_scores.mean():.4f}")
 
     print("💾 Saving model...")
-    # Save model with feature names for safe prediction
     model_package = {
         'model': model,
         'features': list(X.columns)
