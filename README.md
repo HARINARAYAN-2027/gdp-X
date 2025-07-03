@@ -80,12 +80,7 @@ gdp-X-main/
 
 ---
 
-## 📊 Screenshots
 
-> ![Home Page Screenshot](static/images/screenshot-home.png)
-> ![Prediction Result Screenshot](static/images/screenshot-result.png)
-
----
 
 ## 🤝 Contributing
 
